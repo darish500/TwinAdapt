@@ -32,6 +32,7 @@ T_life = 25;      % simulated years to end-of-life
 k_Rs   = 0.5;     % Rs increases 50% by EOL
 k_Rsh  = 0.6;     % Rsh decreases 60% by EOL
 k_Iph  = 0.2;     % Iph decreases 20% by EOL
+T_life_batt = 10; 
 
 Q = 7;      % Ah   - nominal capacity (used by Coulomb counting)
 V_nom        = 12;     % V    - nominal voltage
@@ -56,6 +57,9 @@ OCV_tbl = [11.6 11.8 11.9 12.1 12.2 12.3 12.4 12.5 12.6 12.7 12.8]; % V , matche
 %% ---- Initial conditions ----
 SOC_init = 100;   % %  - start fully charged (Test 1/2/3 all assume this)
 Vp_init  = 0;     % V  - polarization voltage starts relaxed
+k_R0 = 0.5;
+k_R1 = 0.6;
+k_Q = 0.2;
 %% ---- Solve Rs, Iph, I0 exactly from 3 conditions: Isc, Voc, Imp ----
 % x = [Rs, Iph, ln(I0)]
 x0 = [0.4, Isc_ref, log(1e-8)];
