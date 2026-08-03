@@ -32,6 +32,30 @@ T_life = 25;      % simulated years to end-of-life
 k_Rs   = 0.5;     % Rs increases 50% by EOL
 k_Rsh  = 0.6;     % Rsh decreases 60% by EOL
 k_Iph  = 0.2;     % Iph decreases 20% by EOL
+
+Q = 7;      % Ah   - nominal capacity (used by Coulomb counting)
+V_nom        = 12;     % V    - nominal voltage
+V_charge_max = 14.7;   % V    - cycle charging voltage (midpoint of 14.5-14.9 V range)
+V_standby    = 13.65;  % V    - standby/float voltage (midpoint of 13.5-13.8 V range)
+I_charge_max = 2.1;    % A    - maximum initial charging current
+
+%% ---- Equivalent circuit parameters (HEALTHY baseline) ----
+% Kept as separate scalar parameters (not hardcoded inline) so that a
+% future Battery_Degradation_Model can grow R0/R1 and shrink C1 over
+% time, mirroring how Rs/Rsh/Iph_ref were treated in the PV stages.
+R0   = 0.03;      % Ohm  - internal (ohmic) resistance
+R1   = 0.015;     % Ohm  - polarization (charge-transfer) resistance
+C1   = 2200;      % F    - polarization capacitance
+tau1 = R1 * C1;   % s    - RC time constant (~33 s) -- sanity check only
+
+%% ---- OCV-SOC lookup table (healthy lead-acid characteristic) ----
+% Ascending breakpoints, as required by Simulink's 1-D Lookup Table block.
+SOC_bp  = [0 10 20 30 40 50 60 70 80 90 100];                       % % , ascending
+OCV_tbl = [11.6 11.8 11.9 12.1 12.2 12.3 12.4 12.5 12.6 12.7 12.8]; % V , matches SOC_bp order
+
+%% ---- Initial conditions ----
+SOC_init = 100;   % %  - start fully charged (Test 1/2/3 all assume this)
+Vp_init  = 0;     % V  - polarization voltage starts relaxed
 %% ---- Solve Rs, Iph, I0 exactly from 3 conditions: Isc, Voc, Imp ----
 % x = [Rs, Iph, ln(I0)]
 x0 = [0.4, Isc_ref, log(1e-8)];
