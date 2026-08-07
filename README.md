@@ -12,13 +12,14 @@ A research-grade Prognostics and Health Management (PHM) framework built in MATL
 | `PV_Params_Stage2.mat` | PV degradation scaling constants. |
 | `Stage3_Battery_ParamDefinition.m` | Battery ECM parameter definition script — run this (F5) before simulating, it populates the base workspace. |
 | `Battery_Params_Stage3.mat` | Saved output of the above — locked battery baseline parameters. |
+| `getting_plots_stage2.m` | Fault-sweep validation script for Stage 5 — drives `FaultType_select`/`FaultSeverity_select` via `set_param`, logs all 7 fault outputs, and plots Rs/Rsh/Iph vs. time. |
 
 ## Build philosophy
 
 - **One stage at a time.** Each stage has explicit acceptance criteria and is validated with real simulation output before the next stage begins.
 - **Everything in one model.** Each stage is a subsystem added to the same `.slx`, not a separate file — this mirrors how the final integrated system will actually look.
 - **No masked subsystems.** All parameters are explicit MATLAB Function inports / Simscape block fields, fed by top-level `Constant` blocks referencing base-workspace variables. Masking was tried early on and caused persistent UI issues — abandoned in favor of this explicit pattern, kept consistent across all stages since.
-- **Parameters are never hardcoded.** Every physical constant (`Rs`, `Rsh`, `R0`, `Q`, `k_R0`, `T_life_batt`, etc.) lives in the base workspace, loaded via a `_ParamDefinition.m` script or `reformable_AI.m`, not typed as literals into block dialogs. This was briefly violated during early Stage 4 development (aging-rate constants were typed directly into Constant blocks) and corrected before Stage 4 was closed out — see Lessons Learned.
+- **Parameters are never hardcoded.** Every physical constant (`Rs`, `Rsh`, `R0`, `Q`, `k_R0`, `T_life_batt`, etc.) lives in the base workspace, loaded via a `_ParamDefinition.m` script or `reformable_AI.m`, not typed as literals into block dialogs. This was briefly violated during early Stage 4 development (aging-rate constants were typed directly into Constant blocks) and corrected before Stage 4 was closed out — see Lessons Learned. It is currently also violated in Stage 5 (fault-severity gains) — see Stage 5 notes below.
 - **Every workspace variable name must be globally unique across stages**, even when two stages have conceptually "the same" parameter (e.g. PV and battery both have a "life" constant). Reusing a name causes silent overwrites, not errors — see Lessons Learned.
 
 ## Stage status
@@ -49,6 +50,29 @@ All 5 validation tests passed:
 
 `Battery_Model` still runs standalone without errors; no duplicated battery model was created.
 
+### ✅ Stage 5 — PV_Fault_Model
+Inserted between `PV_Degradation_Model` and `PV_model`, intercepting the three lines that used to go straight from degradation into the physical model. Same explicit-inport pattern as every other stage — no masking, no parameter-scope UI.
+
+**I/O:** 6 inports (`t`, `Rs_aged`, `Rsh_aged`, `Iph_ref_aged`, `FaultType_select`, `FaultSeverity_select`) → 7 outports (`Rs_fault`, `Rsh_fault`, `Iph_fault`, `Fault_Type`, `Fault_Severity`, `Fault_Active`, `Fault_TempRise`). `FaultType_select`/`FaultSeverity_select` are driven by root-level `Constant` blocks (manual selection for now, same pattern as `G_test`/`Tc_test`/`V_test`), not yet time-windowed.
+
+**Core rule enforced in the MATLAB Function:** every fault branch modifies the *aged* parameter values (`Rs_aged`, `Rsh_aged`, `Iph_ref_aged`), never the Stage 1 nameplate values — keeps aging and faults mathematically separable, same principle as the Stage 2/4 aged-parameter feedback pattern.
+
+Seven fault modes (`FaultType_select` 0–6), each scaling continuously with `FaultSeverity_select` (0–1):
+
+| Code | Fault | Mechanism |
+|---|---|---|
+| 0 | Healthy | Pass-through |
+| 1 | Partial Shading | `Iph_fault` reduced proportionally to severity |
+| 2 | Soiling | Gentler `Iph_fault` reduction + gradual `Fault_TempRise` |
+| 3 | Hotspot | `Rs_fault` increases (×4 at severity=1), real `Fault_TempRise` |
+| 4 | PID | `Rsh_fault` collapses (up to 95% reduction) |
+| 5 | Open Circuit | `Iph_fault → 0`, `Rs_fault` driven very high (both mechanisms) |
+| 6 | Short Circuit | `Rsh_fault → ~0` (0.1% of aged value) |
+
+**Validation:** swept all 7 cases via `set_param` in `getting_plots_stage2.m`, logged through `To Workspace` blocks (same Timeseries/`-1` convention), plotted Rs/Rsh/Iph vs. time. Confirmed each fault modifies only its intended parameter(s) while every other output stays pinned to the Stage 2 aged baseline — e.g. Hotspot: `Rs_fault` 0.0154→0.0462, `Rsh_fault`/`Iph_fault` unchanged; PID: `Rsh_fault` 380→199.5, `Rs_fault`/`Iph_fault` unchanged. All 6 acceptance test cases (Healthy, Shading, Hotspot, PID, Open Circuit, Short Circuit) passed.
+
+**Known deviation from the "never hardcoded" rule:** the fault-severity gains (`k_hotspot=4.0`, `k_pid=0.95`, the 40°C/5°C temp-rise scalars, the Open/Short-circuit multipliers) are currently literals inside the MATLAB Function block, not base-workspace variables. Flagged, not yet resolved — candidate for a `PV_Fault_ParamDefinition.m` + `.mat` pair mirroring the Stage 3 battery pattern, before this is called fully consistent with the rest of the repo.
+
 ## Lessons learned (worth remembering before the next stage)
 
 - **Simscape components don't inherit sensible defaults.** New Resistor/Capacitor blocks start at factory values (e.g. 1Ω, 1µF) — these must be explicitly set to workspace variables or the simulation will run "successfully" on the wrong physics, or blow up if the mismatch is severe enough.
@@ -61,18 +85,18 @@ All 5 validation tests passed:
 - **"Repeating Sequence" ≠ "Repeating Sequence Stair."** The former linearly interpolates between points (a ramp); the latter holds each value flat until the next timestamp (a true step). Easy to grab the wrong one from the library browser.
 - **Scope y-axis auto-scaling can hide a correct signal.** Before concluding a signal is "flat" or "broken," check the expected magnitude of change against the axis range — several apparent bugs in this project turned out to be a signal moving correctly but too small to see at the current scale.
 - **`.slx` files are just zip archives.** They can be unzipped and their internal XML (block diagram, parameters, wiring) inspected directly — useful for verifying actual model state rather than reasoning about it secondhand.
+- **A subsystem's visual block layout order and its actual output port order can differ.** `PV_Degradation_Model`'s outports are declared `D_index(1), H_Pv(2), Iph_ref_aged(3), Rsh_aged(4), Rs_aged(5)` internally — reversed from a naive top-to-bottom read of the canvas. Wiring `PV_Fault_Model`'s inports against the wrong assumed order would have silently swapped `Rs_aged`↔`Iph_ref_aged`. Verified correct by checking each port's actual index (via `.slx` XML inspection) rather than trusting layout position.
 - **Workspace variables don't persist across MATLAB sessions.** Always re-run the relevant `_ParamDefinition.m` script (or `load()` the `.mat`) after reopening MATLAB, before simulating.
 
 ## Roadmap (not yet built)
 
-Per the original TwinAdapt-PHM architecture, `Battery_Model` is intentionally electrically isolated from `PV_model`/`PV_Degradation_Model` for now — they share only the root `Clock` (simulation-time reference, not a functional coupling). Both PV and battery now have their own independent aging behavior (Stages 2 and 4), which was the prerequisite for the coupling stage below. Future stages, in roughly the order they'll depend on each other:
+Per the original TwinAdapt-PHM architecture, `Battery_Model` is intentionally electrically isolated from `PV_model`/`PV_Degradation_Model`/`PV_Fault_Model` for now — they share only the root `Clock` (simulation-time reference, not a functional coupling). Both PV and battery have independent aging behavior (Stages 2 and 4), and the PV side now has independent fault behavior (Stage 5) on top of that. Future stages, in roughly the order they'll depend on each other:
 
-1. **PV_Fault_Model** — discrete fault injection for the PV side (separate from gradual aging)
-2. **Battery_Fault_Model** — discrete fault injection for the battery side (thermal runaway, cell imbalance, over-discharge, sensor failures, short/open circuits — explicitly excluded from Stage 4 by design)
-3. **Integrated Energy System** — the actual PV→Battery coupling (charging current from PV output into `I_batt`)
-4. **High-Fidelity Digital Twin**
-5. **Sensor Data Generator**
-6. **Residual Engine**
-7. **Dataset Generator**
-8. **Adaptive TinyML**
-9. **Health-Aware Optimization**
+1. **Battery_Fault_Model** — discrete fault injection for the battery side (thermal runaway, cell imbalance, over-discharge, sensor failures, short/open circuits — explicitly excluded from Stage 4 by design)
+2. **Integrated Energy System** — the actual PV→Battery coupling (charging current from PV output into `I_batt`)
+3. **High-Fidelity Digital Twin**
+4. **Sensor Data Generator**
+5. **Residual Engine**
+6. **Dataset Generator**
+7. **Adaptive TinyML**
+8. **Health-Aware Optimization**
