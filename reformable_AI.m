@@ -1,5 +1,5 @@
 %% ===================== Stage1_PV_ParamExtraction.m (FIXED v6 — fixed Rsh, exact 3-eq solve) =====================
-clear; clc;
+%clear; clc;
 
 %% Physical constants
 k_B = 1.380649e-23;
@@ -343,6 +343,100 @@ save('Battery_Twin_Params.mat', ...
     'Battery_Twin_SOC_init','Battery_Twin_Vp_init');
 
 fprintf('--- Stage 8 Step 3 parameters saved (Battery_Twin_Params.mat) ---\n');
+
+%% ===================== Stage 9 (Step 1): PV_Feature_Engineering (Group A+B) parameters =====================
+% Instantaneous + magnitude features. No temporal buffering yet -- that's
+% Group C, a separate step once the solver's variable-step timing is
+% accounted for (confirmed: ode23t, variable-step -- rolling windows must
+% buffer by elapsed TIME, not sample count).
+%
+% Normalization uses FIXED nameplate ratings (Isc_ref, Pmax_ref) as the
+% denominator, not a live signal like PV_Twin_Current -- this is what
+% makes the normalization itself always safe (a nameplate rating never
+% approaches zero). Stage9_Min_Irradiance is a SEPARATE, purely
+% interpretive flag: below this level the panel is barely generating
+% (dawn/dusk regime for this panel's 1000 W/m^2 rating), so a small
+% absolute residual there is less physically meaningful even though the
+% normalized math itself never breaks.
+Stage9_Min_Irradiance = 50;   % W/m^2 -- below this, PV generation is negligible (dawn/dusk regime)
+
+save('Stage9_PV_InstantFeature_Params.mat', 'Stage9_Min_Irradiance');
+
+fprintf('--- Stage 9 Step 1 parameters saved (Stage9_PV_InstantFeature_Params.mat) ---\n');
+
+%% ===================== Stage 9 (Step 2): Rolling-window (Group C) parameters =====================
+% Windows are in SECONDS, not sample counts -- required because the
+% solver is ode23t (confirmed variable-step: ode23t is not a valid
+% fixed-step solver name). Consecutive samples are unevenly spaced in
+% time, so a fixed-count window would cover a different amount of real
+% time depending on how fast the solver was stepping at that moment.
+% The feature block buffers (time, value) pairs and trims by elapsed
+% time, not by index.
+Stage9_Window_Short  = 5;    % seconds -- fast-reacting, catches sudden spikes
+Stage9_Window_Medium = 20;   % seconds -- general-purpose mean/std indicator
+Stage9_Window_Long   = 60;   % seconds -- reserved for the Group D trend feature (not used in Group C)
+
+% Fixed-size persistent buffer capacity (samples), generously sized so
+% ode23t's adaptive stepping doesn't fill the buffer before it spans
+% Stage9_Window_Medium seconds of real time. ASSUMPTION: 20000 samples is
+% enough headroom for this model's step-size behavior over a 20s window.
+% If Test 11 (startup/window validity) shows the buffer filling
+% completely while covering LESS than Stage9_Window_Medium seconds of
+% real time, this needs to be increased.
+Stage9_Max_Buffer_Samples = 20000;
+
+% Discrete sample time (seconds) for any MATLAB Function block holding
+% persistent rolling-buffer state (like the Group C block above). ode23t
+% is an implicit variable-step solver -- it evaluates candidate/trial
+% time points internally before accepting a step, and a block with
+% continuous (unsampled) inputs gets called on EVERY trial, not just
+% accepted ones. That corrupts a persistent buffer's sense of elapsed
+% time. Setting this block's own Sample Time (in its Block Parameters
+% dialog, not the Symbols pane) to this value forces it to only actually
+% execute once per this many real accepted seconds, insulating the
+% buffer from solver-internal noise.
+Stage9_Feature_SampleTime = 0.1;   % seconds
+
+%% ===================== Stage 9 (Step 4): PV Twin operating-domain validity =====================
+% Operationalizes the Stage 8 Test 6 finding: PV_Digital_Twin's
+% Newton-Raphson solve diverges when the measured voltage exceeds what a
+% healthy panel could physically produce (a sensor-fault bias pushed
+% 17V -> 27V, past Voc~21.5V, and the residual came back as a
+% non-physical 76.6A). Per Stage 9 Section 46, this does NOT fix that
+% Stage 8 limitation -- it flags when the Twin is operating outside the
+% domain it was validated for, so later PHM stages don't mistake solver
+% breakdown for genuine physical degradation.
+Stage9_PV_Voltage_Min = 0;            % V -- below this, no meaningful PV operation
+Stage9_PV_Voltage_Max = 0.95*Voc_ref; % V -- safety margin below Voc_ref where the Newton-Raphson
+                                       %      solve stays well-conditioned (documented Stage 8 finding)
+
+save('Stage9_PV_TwinValidity_Params.mat', 'Stage9_PV_Voltage_Min', 'Stage9_PV_Voltage_Max');
+
+fprintf('--- Stage 9 Step 4 parameters saved (Stage9_PV_TwinValidity_Params.mat) ---\n');
+
+%% ===================== Stage 9 (Step 5): Battery_Feature_Engineering (Group A+B) parameters =====================
+% Mirrors the PV Group A+B block, but only one residual exists on the
+% battery side (Battery_Residual_Voltage -- Battery_Digital_Twin never
+% produces a Current/Power prediction, per the Stage 8 design decision),
+% so this block is correspondingly smaller.
+%
+% Battery_V_nominal is the normalization denominator, same safety
+% reasoning as PV's Isc_ref/Pmax_ref: a FIXED reference, never a live
+% signal that could approach zero. Computed from the battery's own
+% characterization data (max(OCV_tbl), the fully-charged OCV) rather
+% than a new hardcoded number, so it's tied to something already
+% physically justified rather than an arbitrary constant.
+Battery_V_nominal = max(OCV_tbl);   % V -- fully-charged OCV, used as the fixed normalization reference
+
+save('Stage9_Battery_InstantFeature_Params.mat', 'Battery_V_nominal');
+
+fprintf('--- Stage 9 Step 5 parameters saved (Stage9_Battery_InstantFeature_Params.mat) ---\n');
+
+save('Stage9_Window_Params.mat', ...
+    'Stage9_Window_Short','Stage9_Window_Medium','Stage9_Window_Long', ...
+    'Stage9_Max_Buffer_Samples','Stage9_Feature_SampleTime');
+
+fprintf('--- Stage 9 Step 2 parameters saved (Stage9_Window_Params.mat) ---\n');
 
 %% Save Stage 2 (PV degradation) + Stage 4 (battery degradation) rate constants
 save('PV_Degradation_Params.mat', 'T_life','k_Rs','k_Rsh','k_Iph');
