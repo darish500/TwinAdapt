@@ -1,9 +1,0 @@
-G_test,NaNInfCount,FirstBadColumn,ValidFlagCorrect,TwinCurrentFiniteReal,NormResidualBounded,Verdict
-0,0,,1,1,1,PASS
-1,0,,1,1,1,PASS
-10,0,,1,1,1,PASS
-49,0,,1,1,1,PASS
-50,0,,1,1,1,PASS
-51,0,,1,1,1,PASS
-100,0,,1,1,1,PASS
-1000,0,,1,1,1,PASS

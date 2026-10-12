@@ -1,9 +1,0 @@
-Asset,Regime,Model,MAE_sensor,MAE_twin_exact,MAE_twin_mismatch,Advantage_exact,Advantage_mismatch,Pct_advantage_kept
-PV,A: unseen levels,ridge,0.0642,0.0392,0.0392,0.0249,0.0249,100
-PV,A: unseen levels,trees,0.2011,0.1649,0.1649,0.0361,0.0361,100
-PV,B: unseen profile,ridge,0.0771,0.0444,0.0444,0.0326,0.0326,100
-PV,B: unseen profile,trees,0.105,0.0145,0.0145,0.0906,0.0906,100
-Battery,A: unseen levels,ridge,0.2384,0.1611,0.3569,0.0773,-0.1184,-153
-Battery,A: unseen levels,trees,0.2518,0.1796,0.264,0.0722,-0.0121,-17
-Battery,B: unseen profile,ridge,0.2992,0.1518,0.2703,0.1474,0.029,20
-Battery,B: unseen profile,trees,0.3114,0.1988,0.2699,0.1126,0.0415,37

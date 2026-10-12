@@ -39,12 +39,10 @@ codegen/
 *.sbproj.backup
 *.sbproj.bak
 
-*.mat 
- 
- .zip
-
- .csv
-
- .txt
-
- 
+*.mat
+*.zip
+*.csv
+*.txt
+*.png
+*.docx
+*.md
