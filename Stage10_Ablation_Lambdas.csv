@@ -1,0 +1,45 @@
+Asset,Regime,FeatureSet,RidgeLambda,ValidationMAE
+PV,A: unseen levels,S1 sensor instantaneous,0.01,0.1383
+PV,A: unseen levels,S2 sensor + sensor windows,0.01,0.1009
+PV,A: unseen levels,S3 sensor strong (S + ratios),100,0.0564
+PV,A: unseen levels,T1 Twin only: all Twin features,100,0.0835
+PV,A: unseen levels,T2 Twin only: raw residuals,10,0.1336
+PV,A: unseen levels,T3 Twin only: residual windows,100,0.1018
+PV,A: unseen levels,T4 Twin only: instantaneous,10,0.0996
+PV,A: unseen levels,C1 strong + raw residuals,1,0.038
+PV,A: unseen levels,C2 strong + residual windows,1,0.0291
+PV,A: unseen levels,C3 strong + all Twin,1,0.0309
+PV,A: unseen levels,C4 instantaneous sensor + instantaneous Twin,10,0.1098
+PV,B: unseen profile,S1 sensor instantaneous,0.01,0.0922
+PV,B: unseen profile,S2 sensor + sensor windows,0.01,0.0591
+PV,B: unseen profile,S3 sensor strong (S + ratios),0.01,0.0536
+PV,B: unseen profile,T1 Twin only: all Twin features,0.1,0.0613
+PV,B: unseen profile,T2 Twin only: raw residuals,0.01,0.1134
+PV,B: unseen profile,T3 Twin only: residual windows,1,0.0874
+PV,B: unseen profile,T4 Twin only: instantaneous,0.01,0.0783
+PV,B: unseen profile,C1 strong + raw residuals,0.01,0.0315
+PV,B: unseen profile,C2 strong + residual windows,0.01,0.0302
+PV,B: unseen profile,C3 strong + all Twin,0.01,0.0302
+PV,B: unseen profile,C4 instantaneous sensor + instantaneous Twin,100,0.0812
+Battery,A: unseen levels,S1 sensor instantaneous,1000,0.3708
+Battery,A: unseen levels,S2 sensor + sensor windows,0.01,0.3526
+Battery,A: unseen levels,S3 sensor strong (S + ratios),1,0.3439
+Battery,A: unseen levels,T1 Twin only: all Twin features,0.01,0.2446
+Battery,A: unseen levels,T2 Twin only: raw residuals,0.01,0.3568
+Battery,A: unseen levels,T3 Twin only: residual windows,0.01,0.2461
+Battery,A: unseen levels,T4 Twin only: instantaneous,0.01,0.3563
+Battery,A: unseen levels,C1 strong + raw residuals,0.1,0.2431
+Battery,A: unseen levels,C2 strong + residual windows,1,0.1956
+Battery,A: unseen levels,C3 strong + all Twin,0.1,0.1945
+Battery,A: unseen levels,C4 instantaneous sensor + instantaneous Twin,1000,0.3659
+Battery,B: unseen profile,S1 sensor instantaneous,0.01,0.3501
+Battery,B: unseen profile,S2 sensor + sensor windows,0.01,0.352
+Battery,B: unseen profile,S3 sensor strong (S + ratios),1,0.3602
+Battery,B: unseen profile,T1 Twin only: all Twin features,0.01,0.2731
+Battery,B: unseen profile,T2 Twin only: raw residuals,1000,0.3509
+Battery,B: unseen profile,T3 Twin only: residual windows,0.01,0.2768
+Battery,B: unseen profile,T4 Twin only: instantaneous,0.01,0.35
+Battery,B: unseen profile,C1 strong + raw residuals,0.01,0.2577
+Battery,B: unseen profile,C2 strong + residual windows,1,0.2044
+Battery,B: unseen profile,C3 strong + all Twin,1,0.2043
+Battery,B: unseen profile,C4 instantaneous sensor + instantaneous Twin,0.01,0.3493

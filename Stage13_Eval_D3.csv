@@ -1,0 +1,18 @@
+Asset,GroupBy,Group,nRuns,Pct_faults_flagged,Median_residual_ratio
+PV,ALL,all,100,5,1.08
+PV,fault type,bias,25,0,0.93
+PV,fault type,stuck,25,16,1.26
+PV,fault type,noise,25,0,1.05
+PV,fault type,drift,25,4,0.92
+PV,channel,G,28,7,1.6
+PV,channel,I,24,13,1.6
+PV,channel,Tc,24,0,0.95
+PV,channel,V,24,0,0.92
+Battery,ALL,all,100,42,1.07
+Battery,fault type,bias,25,40,1.07
+Battery,fault type,stuck,25,52,1.6
+Battery,fault type,noise,25,40,1.05
+Battery,fault type,drift,25,36,1.07
+Battery,channel,I,32,19,1.07
+Battery,channel,T,32,0,1
+Battery,channel,V,36,100,5.36

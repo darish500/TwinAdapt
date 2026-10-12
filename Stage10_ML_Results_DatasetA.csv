@@ -1,0 +1,21 @@
+Asset,Regime,Features,Model,MAE,R2
+PV,A: unseen levels,time only,trees,0.25,-0
+PV,A: unseen levels,sensor-only,trees,0.1728,0.233
+PV,A: unseen levels,sensor-only,ridge,0.0633,0.903
+PV,A: unseen levels,sensor+Twin,trees,0.2139,0.217
+PV,A: unseen levels,sensor+Twin,ridge,0.0411,0.954
+PV,B: unseen profile,time only,trees,0.3004,-0
+PV,B: unseen profile,sensor-only,trees,0.2179,0.484
+PV,B: unseen profile,sensor-only,ridge,0.0731,0.909
+PV,B: unseen profile,sensor+Twin,trees,0.0164,0.99
+PV,B: unseen profile,sensor+Twin,ridge,0.0482,0.963
+Battery,A: unseen levels,time only,trees,0.25,-0
+Battery,A: unseen levels,sensor-only,trees,0.2537,-0.458
+Battery,A: unseen levels,sensor-only,ridge,0.2374,-0.132
+Battery,A: unseen levels,sensor+Twin,trees,0.1748,0.217
+Battery,A: unseen levels,sensor+Twin,ridge,0.1599,0.401
+Battery,B: unseen profile,time only,trees,0.3004,-0
+Battery,B: unseen profile,sensor-only,trees,0.315,-0.104
+Battery,B: unseen profile,sensor-only,ridge,0.3035,-0.016
+Battery,B: unseen profile,sensor+Twin,trees,0.1988,0.505
+Battery,B: unseen profile,sensor+Twin,ridge,0.1578,0.626

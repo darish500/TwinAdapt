@@ -1,0 +1,1081 @@
+Stage 10 master started 10-Oct-2026 02:20:56, MATLAB 2025b, folder /home/inspiredkhalid/workspace/Matlab_workspace/Reformable_AI
+Reference snapshot stored in Stage10_repro_snapshot (9 files).
+
+=== Stage10_ml_compare ===
+PV | A: unseen levels | train rows 5460, test rows 3640 (60 / 40 runs)
+PV | B: unseen profile | train rows 6825, test rows 2275 (75 / 25 runs)
+Battery | A: unseen levels | train rows 5460, test rows 3640 (60 / 40 runs)
+Battery | B: unseen profile | train rows 6825, test rows 2275 (75 / 25 runs)
+       <strong>Asset</strong>              <strong>Regime</strong>               <strong>Features</strong>          <strong>Model</strong>       <strong>MAE</strong>        <strong>R2</strong>  
+    <strong>___________</strong>    <strong>_____________________</strong>    <strong>_______________</strong>    <strong>_________</strong>    <strong>______</strong>    <strong>______</strong>
+
+    {'PV'     }    {'A: unseen levels' }    {'time only'  }    {'trees'}      0.25         0
+    {'PV'     }    {'A: unseen levels' }    {'sensor-only'}    {'trees'}    0.1728     0.233
+    {'PV'     }    {'A: unseen levels' }    {'sensor-only'}    {'ridge'}    0.0633     0.903
+    {'PV'     }    {'A: unseen levels' }    {'sensor+Twin'}    {'trees'}    0.2139     0.217
+    {'PV'     }    {'A: unseen levels' }    {'sensor+Twin'}    {'ridge'}    0.0411     0.954
+    {'PV'     }    {'B: unseen profile'}    {'time only'  }    {'trees'}    0.3004         0
+    {'PV'     }    {'B: unseen profile'}    {'sensor-only'}    {'trees'}    0.2179     0.484
+    {'PV'     }    {'B: unseen profile'}    {'sensor-only'}    {'ridge'}    0.0731     0.909
+    {'PV'     }    {'B: unseen profile'}    {'sensor+Twin'}    {'trees'}    0.0164      0.99
+    {'PV'     }    {'B: unseen profile'}    {'sensor+Twin'}    {'ridge'}    0.0482     0.963
+    {'Battery'}    {'A: unseen levels' }    {'time only'  }    {'trees'}      0.25         0
+    {'Battery'}    {'A: unseen levels' }    {'sensor-only'}    {'trees'}    0.2537    -0.458
+    {'Battery'}    {'A: unseen levels' }    {'sensor-only'}    {'ridge'}    0.2374    -0.132
+    {'Battery'}    {'A: unseen levels' }    {'sensor+Twin'}    {'trees'}    0.1748     0.217
+    {'Battery'}    {'A: unseen levels' }    {'sensor+Twin'}    {'ridge'}    0.1599     0.401
+    {'Battery'}    {'B: unseen profile'}    {'time only'  }    {'trees'}    0.3004         0
+    {'Battery'}    {'B: unseen profile'}    {'sensor-only'}    {'trees'}     0.315    -0.104
+    {'Battery'}    {'B: unseen profile'}    {'sensor-only'}    {'ridge'}    0.3035    -0.016
+    {'Battery'}    {'B: unseen profile'}    {'sensor+Twin'}    {'trees'}    0.1988     0.505
+    {'Battery'}    {'B: unseen profile'}    {'sensor+Twin'}    {'ridge'}    0.1578     0.626
+
+--- Stage10_ml_compare finished in 46.2 s ---
+
+=== Stage10_cv_compare ===
+       <strong>Asset</strong>                  <strong>Scheme</strong>                 <strong>Model</strong>          <strong>Features</strong>         <strong>pooledMAE</strong>    <strong>pooledR2</strong>     <strong>foldMAE_mean_std</strong> 
+    <strong>___________</strong>    <strong>____________________________</strong>    <strong>_________</strong>    <strong>_________________</strong>    <strong>_________</strong>    <strong>________</strong>    <strong>__________________</strong>
+
+    {'PV'     }    {'A: leave-one-level-out'  }    {'trees'}    {'sensor-basic' }     0.1845       -0.174     {'0.184 +- 0.043'}
+    {'PV'     }    {'A: leave-one-level-out'  }    {'trees'}    {'sensor-strong'}     0.1895       -0.106     {'0.189 +- 0.015'}
+    {'PV'     }    {'A: leave-one-level-out'  }    {'trees'}    {'strong+Twin'  }     0.1553        0.261     {'0.155 +- 0.050'}
+    {'PV'     }    {'A: leave-one-level-out'  }    {'ridge'}    {'sensor-basic' }     0.0669        0.831     {'0.067 +- 0.003'}
+    {'PV'     }    {'A: leave-one-level-out'  }    {'ridge'}    {'sensor-strong'}     0.0661        0.803     {'0.066 +- 0.002'}
+    {'PV'     }    {'A: leave-one-level-out'  }    {'ridge'}    {'strong+Twin'  }      0.041        0.908     {'0.041 +- 0.003'}
+    {'PV'     }    {'B: leave-one-profile-out'}    {'trees'}    {'sensor-basic' }     0.2096        0.423     {'0.210 +- 0.032'}
+    {'PV'     }    {'B: leave-one-profile-out'}    {'trees'}    {'sensor-strong'}      0.103        0.778     {'0.103 +- 0.012'}
+    {'PV'     }    {'B: leave-one-profile-out'}    {'trees'}    {'strong+Twin'  }     0.0206        0.981     {'0.021 +- 0.011'}
+    {'PV'     }    {'B: leave-one-profile-out'}    {'ridge'}    {'sensor-basic' }     0.0663        0.926     {'0.066 +- 0.015'}
+    {'PV'     }    {'B: leave-one-profile-out'}    {'ridge'}    {'sensor-strong'}     0.0644        0.926     {'0.064 +- 0.013'}
+    {'PV'     }    {'B: leave-one-profile-out'}    {'ridge'}    {'strong+Twin'  }     0.0359        0.973     {'0.036 +- 0.010'}
+    {'Battery'}    {'A: leave-one-level-out'  }    {'trees'}    {'sensor-basic' }     0.2671         -1.3     {'0.267 +- 0.097'}
+    {'Battery'}    {'A: leave-one-level-out'  }    {'trees'}    {'sensor-strong'}     0.2645       -1.326     {'0.264 +- 0.089'}
+    {'Battery'}    {'A: leave-one-level-out'  }    {'trees'}    {'strong+Twin'  }     0.2045       -0.443     {'0.204 +- 0.017'}
+    {'Battery'}    {'A: leave-one-level-out'  }    {'ridge'}    {'sensor-basic' }     0.2202       -0.617     {'0.220 +- 0.123'}
+    {'Battery'}    {'A: leave-one-level-out'  }    {'ridge'}    {'sensor-strong'}     0.2204       -0.632     {'0.220 +- 0.122'}
+    {'Battery'}    {'A: leave-one-level-out'  }    {'ridge'}    {'strong+Twin'  }     0.1526        0.082     {'0.153 +- 0.065'}
+    {'Battery'}    {'B: leave-one-profile-out'}    {'trees'}    {'sensor-basic' }     0.3098       -0.099     {'0.310 +- 0.034'}
+    {'Battery'}    {'B: leave-one-profile-out'}    {'trees'}    {'sensor-strong'}     0.3062       -0.077     {'0.306 +- 0.030'}
+    {'Battery'}    {'B: leave-one-profile-out'}    {'trees'}    {'strong+Twin'  }     0.2266        0.396     {'0.227 +- 0.043'}
+    {'Battery'}    {'B: leave-one-profile-out'}    {'ridge'}    {'sensor-basic' }      0.308        -0.04     {'0.308 +- 0.005'}
+    {'Battery'}    {'B: leave-one-profile-out'}    {'ridge'}    {'sensor-strong'}     0.3108       -0.061     {'0.311 +- 0.008'}
+    {'Battery'}    {'B: leave-one-profile-out'}    {'ridge'}    {'strong+Twin'  }     0.1925        0.458     {'0.193 +- 0.095'}
+
+       <strong>Asset</strong>                  <strong>Scheme</strong>                 <strong>Model</strong>      <strong>Twin_beats_strong_sensor_in_folds</strong>
+    <strong>___________</strong>    <strong>____________________________</strong>    <strong>_________</strong>    <strong>_________________________________</strong>
+
+    {'PV'     }    {'A: leave-one-level-out'  }    {'trees'}               {'2 of 3'}            
+    {'PV'     }    {'A: leave-one-level-out'  }    {'ridge'}               {'3 of 3'}            
+    {'PV'     }    {'B: leave-one-profile-out'}    {'trees'}               {'4 of 4'}            
+    {'PV'     }    {'B: leave-one-profile-out'}    {'ridge'}               {'4 of 4'}            
+    {'Battery'}    {'A: leave-one-level-out'  }    {'trees'}               {'2 of 3'}            
+    {'Battery'}    {'A: leave-one-level-out'  }    {'ridge'}               {'3 of 3'}            
+    {'Battery'}    {'B: leave-one-profile-out'}    {'trees'}               {'4 of 4'}            
+    {'Battery'}    {'B: leave-one-profile-out'}    {'ridge'}               {'4 of 4'}            
+
+--- Stage10_cv_compare finished in 110.6 s ---
+
+=== Stage10_ablation ===
+
+=== ABLATION (ridge, test MAE; lower is better) ===
+       <strong>Asset</strong>              <strong>Regime</strong>                               <strong>FeatureSet</strong>                       <strong>nFeatures</strong>     <strong>MAE</strong>        <strong>R2</strong>  
+    <strong>___________</strong>    <strong>_____________________</strong>    <strong>________________________________________________</strong>    <strong>_________</strong>    <strong>______</strong>    <strong>______</strong>
+
+    {'PV'     }    {'A: unseen levels' }    {'S1 sensor instantaneous'                     }        4        0.0899     0.786
+    {'PV'     }    {'A: unseen levels' }    {'S2 sensor + sensor windows'                  }       16        0.0632     0.903
+    {'PV'     }    {'A: unseen levels' }    {'S3 sensor strong (S + ratios)'               }       19        0.0774     0.786
+    {'PV'     }    {'A: unseen levels' }    {'T1 Twin only: all Twin features'             }       12        0.0567     0.913
+    {'PV'     }    {'A: unseen levels' }    {'T2 Twin only: raw residuals'                 }        2        0.1081     0.668
+    {'PV'     }    {'A: unseen levels' }    {'T3 Twin only: residual windows'              }        8        0.0715     0.837
+    {'PV'     }    {'A: unseen levels' }    {'T4 Twin only: instantaneous'                 }        4        0.0796     0.838
+    {'PV'     }    {'A: unseen levels' }    {'C1 strong + raw residuals'                   }       21        0.0475     0.905
+    {'PV'     }    {'A: unseen levels' }    {'C2 strong + residual windows'                }       27        0.0399     0.929
+    {'PV'     }    {'A: unseen levels' }    {'C3 strong + all Twin'                        }       31        0.0392      0.93
+    {'PV'     }    {'A: unseen levels' }    {'C4 instantaneous sensor + instantaneous Twin'}        8        0.0759     0.854
+    {'PV'     }    {'B: unseen profile'}    {'S1 sensor instantaneous'                     }        4        0.0884     0.861
+    {'PV'     }    {'B: unseen profile'}    {'S2 sensor + sensor windows'                  }       16        0.0736     0.908
+    {'PV'     }    {'B: unseen profile'}    {'S3 sensor strong (S + ratios)'               }       19         0.081     0.871
+    {'PV'     }    {'B: unseen profile'}    {'T1 Twin only: all Twin features'             }       12        0.0642     0.934
+    {'PV'     }    {'B: unseen profile'}    {'T2 Twin only: raw residuals'                 }        2        0.1105     0.809
+    {'PV'     }    {'B: unseen profile'}    {'T3 Twin only: residual windows'              }        8         0.083     0.885
+    {'PV'     }    {'B: unseen profile'}    {'T4 Twin only: instantaneous'                 }        4        0.0796     0.898
+    {'PV'     }    {'B: unseen profile'}    {'C1 strong + raw residuals'                   }       21        0.0522     0.929
+    {'PV'     }    {'B: unseen profile'}    {'C2 strong + residual windows'                }       27         0.046     0.945
+    {'PV'     }    {'B: unseen profile'}    {'C3 strong + all Twin'                        }       31        0.0458     0.945
+    {'PV'     }    {'B: unseen profile'}    {'C4 instantaneous sensor + instantaneous Twin'}        8        0.0738     0.912
+    {'Battery'}    {'A: unseen levels' }    {'S1 sensor instantaneous'                     }        3        0.2536    -0.055
+    {'Battery'}    {'A: unseen levels' }    {'S2 sensor + sensor windows'                  }       12        0.2373    -0.133
+    {'Battery'}    {'A: unseen levels' }    {'S3 sensor strong (S + ratios)'               }       15        0.2384    -0.144
+    {'Battery'}    {'A: unseen levels' }    {'T1 Twin only: all Twin features'             }        6        0.1972     0.073
+    {'Battery'}    {'A: unseen levels' }    {'T2 Twin only: raw residuals'                 }        1        0.2482    -0.026
+    {'Battery'}    {'A: unseen levels' }    {'T3 Twin only: residual windows'              }        4        0.1984     0.073
+    {'Battery'}    {'A: unseen levels' }    {'T4 Twin only: instantaneous'                 }        2        0.2476    -0.023
+    {'Battery'}    {'A: unseen levels' }    {'C1 strong + raw residuals'                   }       16        0.1845     0.154
+    {'Battery'}    {'A: unseen levels' }    {'C2 strong + residual windows'                }       19        0.1621     0.372
+    {'Battery'}    {'A: unseen levels' }    {'C3 strong + all Twin'                        }       21        0.1602     0.385
+    {'Battery'}    {'A: unseen levels' }    {'C4 instantaneous sensor + instantaneous Twin'}        5        0.2512    -0.062
+    {'Battery'}    {'B: unseen profile'}    {'S1 sensor instantaneous'                     }        3         0.309    -0.045
+    {'Battery'}    {'B: unseen profile'}    {'S2 sensor + sensor windows'                  }       12        0.3035    -0.016
+    {'Battery'}    {'B: unseen profile'}    {'S3 sensor strong (S + ratios)'               }       15        0.2992     0.007
+    {'Battery'}    {'B: unseen profile'}    {'T1 Twin only: all Twin features'             }        6        0.2277     0.366
+    {'Battery'}    {'B: unseen profile'}    {'T2 Twin only: raw residuals'                 }        1         0.302      0.01
+    {'Battery'}    {'B: unseen profile'}    {'T3 Twin only: residual windows'              }        4        0.2289     0.365
+    {'Battery'}    {'B: unseen profile'}    {'T4 Twin only: instantaneous'                 }        2        0.3018     0.011
+    {'Battery'}    {'B: unseen profile'}    {'C1 strong + raw residuals'                   }       16         0.203     0.501
+    {'Battery'}    {'B: unseen profile'}    {'C2 strong + residual windows'                }       19        0.1548     0.625
+    {'Battery'}    {'B: unseen profile'}    {'C3 strong + all Twin'                        }       21        0.1518     0.637
+    {'Battery'}    {'B: unseen profile'}    {'C4 instantaneous sensor + instantaneous Twin'}        5        0.3081    -0.032
+
+
+=== ABLATION (trees) ===
+       <strong>Asset</strong>              <strong>Regime</strong>                               <strong>FeatureSet</strong>                       <strong>nFeatures</strong>     <strong>nParams</strong>       <strong>MAE</strong>        <strong>R2</strong>  
+    <strong>___________</strong>    <strong>_____________________</strong>    <strong>________________________________________________</strong>    <strong>_________</strong>    <strong>__________</strong>    <strong>______</strong>    <strong>______</strong>
+
+    {'PV'     }    {'A: unseen levels' }    {'S1 sensor instantaneous'                     }        4             20760    0.1531     0.409
+    {'PV'     }    {'A: unseen levels' }    {'S2 sensor + sensor windows'                  }       16             16672    0.1823     0.173
+    {'PV'     }    {'A: unseen levels' }    {'S3 sensor strong (S + ratios)'               }       19              4938    0.2075     0.118
+    {'PV'     }    {'A: unseen levels' }    {'T1 Twin only: all Twin features'             }       12              1672    0.2114     0.224
+    {'PV'     }    {'A: unseen levels' }    {'T2 Twin only: raw residuals'                 }        2             26672    0.2079     0.226
+    {'PV'     }    {'A: unseen levels' }    {'T3 Twin only: residual windows'              }        8              2804    0.2202      0.17
+    {'PV'     }    {'A: unseen levels' }    {'T4 Twin only: instantaneous'                 }        4              5404    0.1913     0.333
+    {'PV'     }    {'A: unseen levels' }    {'C1 strong + raw residuals'                   }       21              3722    0.1416     0.562
+    {'PV'     }    {'A: unseen levels' }    {'C2 strong + residual windows'                }       27              1140    0.1491     0.503
+    {'PV'     }    {'A: unseen levels' }    {'C3 strong + all Twin'                        }       31              1182     0.158     0.488
+    {'PV'     }    {'A: unseen levels' }    {'C4 instantaneous sensor + instantaneous Twin'}        8              5014    0.1707     0.431
+    {'PV'     }    {'B: unseen profile'}    {'S1 sensor instantaneous'                     }        4             45730    0.1858     0.555
+    {'PV'     }    {'B: unseen profile'}    {'S2 sensor + sensor windows'                  }       16             34984     0.212     0.511
+    {'PV'     }    {'B: unseen profile'}    {'S3 sensor strong (S + ratios)'               }       19             17462    0.1056     0.808
+    {'PV'     }    {'B: unseen profile'}    {'T1 Twin only: all Twin features'             }       12             10174    0.0232     0.977
+    {'PV'     }    {'B: unseen profile'}    {'T2 Twin only: raw residuals'                 }        2             92844    0.1082     0.818
+    {'PV'     }    {'B: unseen profile'}    {'T3 Twin only: residual windows'              }        8             17998    0.0469     0.929
+    {'PV'     }    {'B: unseen profile'}    {'T4 Twin only: instantaneous'                 }        4             40208    0.0511     0.934
+    {'PV'     }    {'B: unseen profile'}    {'C1 strong + raw residuals'                   }       21             19240    0.0569     0.942
+    {'PV'     }    {'B: unseen profile'}    {'C2 strong + residual windows'                }       27              5110    0.0154     0.993
+    {'PV'     }    {'B: unseen profile'}    {'C3 strong + all Twin'                        }       31              5176    0.0142     0.992
+    {'PV'     }    {'B: unseen profile'}    {'C4 instantaneous sensor + instantaneous Twin'}        8             33148    0.0518     0.945
+    {'Battery'}    {'A: unseen levels' }    {'S1 sensor instantaneous'                     }        3             41968    0.2727    -0.745
+    {'Battery'}    {'A: unseen levels' }    {'S2 sensor + sensor windows'                  }       12             18122    0.2545    -0.449
+    {'Battery'}    {'A: unseen levels' }    {'S3 sensor strong (S + ratios)'               }       15             16484    0.2568    -0.573
+    {'Battery'}    {'A: unseen levels' }    {'T1 Twin only: all Twin features'             }        6             51022    0.2167    -0.187
+    {'Battery'}    {'A: unseen levels' }    {'T2 Twin only: raw residuals'                 }        1             99964    0.2639     -0.55
+    {'Battery'}    {'A: unseen levels' }    {'T3 Twin only: residual windows'              }        4             58210    0.2273    -0.225
+    {'Battery'}    {'A: unseen levels' }    {'T4 Twin only: instantaneous'                 }        2             82160    0.2901    -0.885
+    {'Battery'}    {'A: unseen levels' }    {'C1 strong + raw residuals'                   }       16             15488    0.2601    -0.636
+    {'Battery'}    {'A: unseen levels' }    {'C2 strong + residual windows'                }       19             15242    0.1757     0.221
+    {'Battery'}    {'A: unseen levels' }    {'C3 strong + all Twin'                        }       21             15266    0.1785     0.229
+    {'Battery'}    {'A: unseen levels' }    {'C4 instantaneous sensor + instantaneous Twin'}        5             25460    0.2671    -0.605
+    {'Battery'}    {'B: unseen profile'}    {'S1 sensor instantaneous'                     }        3             61180    0.3029    -0.092
+    {'Battery'}    {'B: unseen profile'}    {'S2 sensor + sensor windows'                  }       12             23270    0.3149    -0.103
+    {'Battery'}    {'B: unseen profile'}    {'S3 sensor strong (S + ratios)'               }       15             19186    0.3128    -0.119
+    {'Battery'}    {'B: unseen profile'}    {'T1 Twin only: all Twin features'             }        6             89944     0.224     0.423
+    {'Battery'}    {'B: unseen profile'}    {'T2 Twin only: raw residuals'                 }        1         1.258e+05    0.3254     -0.17
+    {'Battery'}    {'B: unseen profile'}    {'T3 Twin only: residual windows'              }        4        1.0378e+05    0.1878     0.562
+    {'Battery'}    {'B: unseen profile'}    {'T4 Twin only: instantaneous'                 }        2        1.1126e+05    0.3407    -0.307
+    {'Battery'}    {'B: unseen profile'}    {'C1 strong + raw residuals'                   }       16             18296    0.3075    -0.069
+    {'Battery'}    {'B: unseen profile'}    {'C2 strong + residual windows'                }       19             25112    0.1931     0.524
+    {'Battery'}    {'B: unseen profile'}    {'C3 strong + all Twin'                        }       21             24024    0.1974     0.527
+    {'Battery'}    {'B: unseen profile'}    {'C4 instantaneous sensor + instantaneous Twin'}        5             31462    0.3208    -0.201
+
+
+=== ABLATION (small neural network, 8 hidden units) ===
+       <strong>Asset</strong>              <strong>Regime</strong>                               <strong>FeatureSet</strong>                       <strong>nFeatures</strong>    <strong>nParams</strong>     <strong>MAE</strong>        <strong>R2</strong>  
+    <strong>___________</strong>    <strong>_____________________</strong>    <strong>________________________________________________</strong>    <strong>_________</strong>    <strong>_______</strong>    <strong>______</strong>    <strong>______</strong>
+
+    {'PV'     }    {'A: unseen levels' }    {'S1 sensor instantaneous'                     }        4           49      0.0737     0.858
+    {'PV'     }    {'A: unseen levels' }    {'S2 sensor + sensor windows'                  }       16          145       0.042     0.954
+    {'PV'     }    {'A: unseen levels' }    {'S3 sensor strong (S + ratios)'               }       19          169      0.0338     0.953
+    {'PV'     }    {'A: unseen levels' }    {'T1 Twin only: all Twin features'             }       12          113      0.0418     0.949
+    {'PV'     }    {'A: unseen levels' }    {'T2 Twin only: raw residuals'                 }        2           33      0.1892     0.325
+    {'PV'     }    {'A: unseen levels' }    {'T3 Twin only: residual windows'              }        8           81      0.1794     0.398
+    {'PV'     }    {'A: unseen levels' }    {'T4 Twin only: instantaneous'                 }        4           49      0.1277     0.621
+    {'PV'     }    {'A: unseen levels' }    {'C1 strong + raw residuals'                   }       21          185      0.0285     0.963
+    {'PV'     }    {'A: unseen levels' }    {'C2 strong + residual windows'                }       27          233      0.0296     0.978
+    {'PV'     }    {'A: unseen levels' }    {'C3 strong + all Twin'                        }       31          265      0.0404     0.964
+    {'PV'     }    {'A: unseen levels' }    {'C4 instantaneous sensor + instantaneous Twin'}        8           81      0.1624     0.463
+    {'PV'     }    {'B: unseen profile'}    {'S1 sensor instantaneous'                     }        4           49      0.0619     0.936
+    {'PV'     }    {'B: unseen profile'}    {'S2 sensor + sensor windows'                  }       16          145      0.0334     0.975
+    {'PV'     }    {'B: unseen profile'}    {'S3 sensor strong (S + ratios)'               }       19          169       0.034     0.967
+    {'PV'     }    {'B: unseen profile'}    {'T1 Twin only: all Twin features'             }       12          113      0.0305     0.985
+    {'PV'     }    {'B: unseen profile'}    {'T2 Twin only: raw residuals'                 }        2           33       0.111     0.834
+    {'PV'     }    {'B: unseen profile'}    {'T3 Twin only: residual windows'              }        8           81      0.0638      0.93
+    {'PV'     }    {'B: unseen profile'}    {'T4 Twin only: instantaneous'                 }        4           49      0.0648     0.935
+    {'PV'     }    {'B: unseen profile'}    {'C1 strong + raw residuals'                   }       21          185      0.0399     0.957
+    {'PV'     }    {'B: unseen profile'}    {'C2 strong + residual windows'                }       27          233      0.0198     0.991
+    {'PV'     }    {'B: unseen profile'}    {'C3 strong + all Twin'                        }       31          265      0.0215     0.989
+    {'PV'     }    {'B: unseen profile'}    {'C4 instantaneous sensor + instantaneous Twin'}        8           81      0.0655     0.935
+    {'Battery'}    {'A: unseen levels' }    {'S1 sensor instantaneous'                     }        3           41      0.2708     -0.63
+    {'Battery'}    {'A: unseen levels' }    {'S2 sensor + sensor windows'                  }       12          113      0.3153    -1.369
+    {'Battery'}    {'A: unseen levels' }    {'S3 sensor strong (S + ratios)'               }       15          137        0.32    -1.384
+    {'Battery'}    {'A: unseen levels' }    {'T1 Twin only: all Twin features'             }        6           65      0.2038    -0.072
+    {'Battery'}    {'A: unseen levels' }    {'T2 Twin only: raw residuals'                 }        1           25      0.2475    -0.029
+    {'Battery'}    {'A: unseen levels' }    {'T3 Twin only: residual windows'              }        4           49      0.2085    -0.061
+    {'Battery'}    {'A: unseen levels' }    {'T4 Twin only: instantaneous'                 }        2           33      0.2474    -0.176
+    {'Battery'}    {'A: unseen levels' }    {'C1 strong + raw residuals'                   }       16          145       0.236    -0.413
+    {'Battery'}    {'A: unseen levels' }    {'C2 strong + residual windows'                }       19          169      0.1794     0.153
+    {'Battery'}    {'A: unseen levels' }    {'C3 strong + all Twin'                        }       21          185      0.1787     0.135
+    {'Battery'}    {'A: unseen levels' }    {'C4 instantaneous sensor + instantaneous Twin'}        5           57      0.2976    -1.083
+    {'Battery'}    {'B: unseen profile'}    {'S1 sensor instantaneous'                     }        3           41      0.3616    -0.497
+    {'Battery'}    {'B: unseen profile'}    {'S2 sensor + sensor windows'                  }       12          113      0.4063    -0.954
+    {'Battery'}    {'B: unseen profile'}    {'S3 sensor strong (S + ratios)'               }       15          137      0.3391    -0.456
+    {'Battery'}    {'B: unseen profile'}    {'T1 Twin only: all Twin features'             }        6           65      0.2062      0.47
+    {'Battery'}    {'B: unseen profile'}    {'T2 Twin only: raw residuals'                 }        1           25      0.3024     0.008
+    {'Battery'}    {'B: unseen profile'}    {'T3 Twin only: residual windows'              }        4           49      0.1819     0.582
+    {'Battery'}    {'B: unseen profile'}    {'T4 Twin only: instantaneous'                 }        2           33      0.3039    -0.027
+    {'Battery'}    {'B: unseen profile'}    {'C1 strong + raw residuals'                   }       16          145      0.2749    -0.122
+    {'Battery'}    {'B: unseen profile'}    {'C2 strong + residual windows'                }       19          169      0.2622    -0.019
+    {'Battery'}    {'B: unseen profile'}    {'C3 strong + all Twin'                        }       21          185      0.2013      0.38
+    {'Battery'}    {'B: unseen profile'}    {'C4 instantaneous sensor + instantaneous Twin'}        5           57      0.3366     -0.36
+
+
+=== WEAR RANGE (ridge) ===
+       <strong>Asset</strong>              <strong>Regime</strong>                               <strong>FeatureSet</strong>                       <strong>MAE_early_D_lt_0p4</strong>    <strong>MAE_mid_D_0p4_to_0p6</strong>    <strong>MAE_advanced_D_gt_0p6</strong>
+    <strong>___________</strong>    <strong>_____________________</strong>    <strong>________________________________________________</strong>    <strong>__________________</strong>    <strong>____________________</strong>    <strong>_____________________</strong>
+
+    {'PV'     }    {'A: unseen levels' }    {'S1 sensor instantaneous'                     }          0.0926                    NaN                  0.0872        
+    {'PV'     }    {'A: unseen levels' }    {'S2 sensor + sensor windows'                  }          0.0618                    NaN                  0.0646        
+    {'PV'     }    {'A: unseen levels' }    {'S3 sensor strong (S + ratios)'               }          0.0835                    NaN                  0.0713        
+    {'PV'     }    {'A: unseen levels' }    {'T1 Twin only: all Twin features'             }          0.0501                    NaN                  0.0633        
+    {'PV'     }    {'A: unseen levels' }    {'T2 Twin only: raw residuals'                 }          0.0698                    NaN                  0.1464        
+    {'PV'     }    {'A: unseen levels' }    {'T3 Twin only: residual windows'              }          0.0336                    NaN                  0.1094        
+    {'PV'     }    {'A: unseen levels' }    {'T4 Twin only: instantaneous'                 }          0.0832                    NaN                   0.076        
+    {'PV'     }    {'A: unseen levels' }    {'C1 strong + raw residuals'                   }          0.0533                    NaN                  0.0418        
+    {'PV'     }    {'A: unseen levels' }    {'C2 strong + residual windows'                }          0.0418                    NaN                   0.038        
+    {'PV'     }    {'A: unseen levels' }    {'C3 strong + all Twin'                        }          0.0415                    NaN                   0.037        
+    {'PV'     }    {'A: unseen levels' }    {'C4 instantaneous sensor + instantaneous Twin'}          0.0808                    NaN                  0.0709        
+    {'PV'     }    {'B: unseen profile'}    {'S1 sensor instantaneous'                     }          0.1124                 0.0677                  0.0748        
+    {'PV'     }    {'B: unseen profile'}    {'S2 sensor + sensor windows'                  }          0.0743                 0.0749                  0.0721        
+    {'PV'     }    {'B: unseen profile'}    {'S3 sensor strong (S + ratios)'               }          0.1047                  0.081                  0.0572        
+    {'PV'     }    {'B: unseen profile'}    {'T1 Twin only: all Twin features'             }          0.0599                 0.0436                  0.0789        
+    {'PV'     }    {'B: unseen profile'}    {'T2 Twin only: raw residuals'                 }          0.0992                  0.079                  0.1376        
+    {'PV'     }    {'B: unseen profile'}    {'T3 Twin only: residual windows'              }          0.0538                 0.0545                  0.1264        
+    {'PV'     }    {'B: unseen profile'}    {'T4 Twin only: instantaneous'                 }          0.0944                 0.0576                  0.0758        
+    {'PV'     }    {'B: unseen profile'}    {'C1 strong + raw residuals'                   }          0.0761                 0.0434                  0.0326        
+    {'PV'     }    {'B: unseen profile'}    {'C2 strong + residual windows'                }          0.0654                   0.04                  0.0297        
+    {'PV'     }    {'B: unseen profile'}    {'C3 strong + all Twin'                        }          0.0649                 0.0399                  0.0297        
+    {'PV'     }    {'B: unseen profile'}    {'C4 instantaneous sensor + instantaneous Twin'}          0.0865                 0.0549                  0.0707        
+    {'Battery'}    {'A: unseen levels' }    {'S1 sensor instantaneous'                     }          0.2523                    NaN                  0.2549        
+    {'Battery'}    {'A: unseen levels' }    {'S2 sensor + sensor windows'                  }           0.241                    NaN                  0.2337        
+    {'Battery'}    {'A: unseen levels' }    {'S3 sensor strong (S + ratios)'               }          0.2469                    NaN                    0.23        
+    {'Battery'}    {'A: unseen levels' }    {'T1 Twin only: all Twin features'             }          0.1613                    NaN                  0.2331        
+    {'Battery'}    {'A: unseen levels' }    {'T2 Twin only: raw residuals'                 }          0.2476                    NaN                  0.2489        
+    {'Battery'}    {'A: unseen levels' }    {'T3 Twin only: residual windows'              }          0.1614                    NaN                  0.2353        
+    {'Battery'}    {'A: unseen levels' }    {'T4 Twin only: instantaneous'                 }          0.2474                    NaN                  0.2478        
+    {'Battery'}    {'A: unseen levels' }    {'C1 strong + raw residuals'                   }           0.164                    NaN                   0.205        
+    {'Battery'}    {'A: unseen levels' }    {'C2 strong + residual windows'                }          0.1419                    NaN                  0.1824        
+    {'Battery'}    {'A: unseen levels' }    {'C3 strong + all Twin'                        }          0.1415                    NaN                   0.179        
+    {'Battery'}    {'A: unseen levels' }    {'C4 instantaneous sensor + instantaneous Twin'}            0.25                    NaN                  0.2525        
+    {'Battery'}    {'B: unseen profile'}    {'S1 sensor instantaneous'                     }          0.3826                  0.021                  0.3794        
+    {'Battery'}    {'B: unseen profile'}    {'S2 sensor + sensor windows'                  }          0.3315                 0.0811                  0.3866        
+    {'Battery'}    {'B: unseen profile'}    {'S3 sensor strong (S + ratios)'               }          0.3154                 0.0875                  0.3889        
+    {'Battery'}    {'B: unseen profile'}    {'T1 Twin only: all Twin features'             }          0.2827                 0.1103                  0.2313        
+    {'Battery'}    {'B: unseen profile'}    {'T2 Twin only: raw residuals'                 }          0.3731                 0.0228                  0.3705        
+    {'Battery'}    {'B: unseen profile'}    {'T3 Twin only: residual windows'              }          0.2807                 0.1106                  0.2363        
+    {'Battery'}    {'B: unseen profile'}    {'T4 Twin only: instantaneous'                 }          0.3733                 0.0275                  0.3675        
+    {'Battery'}    {'B: unseen profile'}    {'C1 strong + raw residuals'                   }           0.188                 0.1112                  0.2638        
+    {'Battery'}    {'B: unseen profile'}    {'C2 strong + residual windows'                }          0.1083                 0.1557                  0.2009        
+    {'Battery'}    {'B: unseen profile'}    {'C3 strong + all Twin'                        }          0.1055                 0.1496                  0.1993        
+    {'Battery'}    {'B: unseen profile'}    {'C4 instantaneous sensor + instantaneous Twin'}          0.3801                 0.0351                  0.3727        
+
+
+=== REDUNDANCY: Twin features that are almost copies of a sensor feature (|r| > 0.95) ===
+       <strong>Asset</strong>              <strong>TwinFeature</strong>            <strong>MaxAbsCorrWithSensorFeature</strong>         <strong>MostSimilarSensorFeature</strong>     
+    <strong>___________</strong>    <strong>__________________________</strong>    <strong>___________________________</strong>    <strong>__________________________________</strong>
+
+    {'PV'     }    {'T_PV_Twin_Current'     }               0.988               {'S_PV_Irradiance_Final'         }
+    {'PV'     }    {'T_PV_Twin_Power'       }                0.99               {'S_PV_Irradiance_Final'         }
+    {'Battery'}    {'T_Battery_Twin_Voltage'}               0.976               {'S_Battery_Voltage_Final_mean20'}
+
+Twin features checked: 18, near-duplicates of a sensor feature: 3
+
+Saved: Stage10_Ablation_Results/ByWear/Lambdas.csv, Stage10_Redundancy.csv, Stage10_FeatureAudit.csv
+--- Stage10_ablation finished in 78.1 s ---
+
+=== Stage10_tinyml ===
+
+=== TinyML SUITABILITY ESTIMATES (desktop-side; float32; no MCU claimed) ===
+       <strong>Asset</strong>         <strong>Model</strong>                 <strong>Candidate</strong>                <strong>nFeatures</strong>    <strong>nParams</strong>     <strong>Flash_B</strong>      <strong>MACs</strong>    <strong>RAM_B_10Hz</strong>    <strong>RAM_B_1Hz</strong>    <strong>kFLOP_per_s</strong>
+    <strong>___________</strong>    <strong>_________</strong>    <strong>________________________________</strong>    <strong>_________</strong>    <strong>_______</strong>    <strong>__________</strong>    <strong>____</strong>    <strong>__________</strong>    <strong>_________</strong>    <strong>___________</strong>
+
+    {'PV'     }    {'ridge'}    {'S2 sensor + windows'         }       16            17             68     16        9664         1024           0.8    
+    {'PV'     }    {'ridge'}    {'S3 sensor strong'            }       19            20             80     19        9676         1036           0.8    
+    {'PV'     }    {'ridge'}    {'T1 Twin only'                }       12            13             52     12        4848          528           3.6    
+    {'PV'     }    {'ridge'}    {'C2 strong + residual windows'}       27            28            112     27       14508         1548           4.5    
+    {'PV'     }    {'ridge'}    {'C3 strong + all Twin'        }       31            32            128     31       14524         1564           4.5    
+    {'PV'     }    {'nn'   }    {'S3 sensor strong'            }       19           169            676    160        9708         1068           1.1    
+    {'PV'     }    {'nn'   }    {'T1 Twin only'                }       12           113            452    104        4880          560           3.8    
+    {'PV'     }    {'nn'   }    {'C2 strong + residual windows'}       27           233            932    224       14540         1580           4.8    
+    {'PV'     }    {'nn'   }    {'C3 strong + all Twin'        }       31           265           1060    256       14556         1596           4.9    
+    {'PV'     }    {'trees'}    {'S3 sensor strong'            }       19         11131     1.3357e+05    420        9676         1036           1.6    
+    {'PV'     }    {'trees'}    {'C3 strong + all Twin'        }       31          3193          38316    300       14524         1564             5    
+    {'Battery'}    {'ridge'}    {'S2 sensor + windows'         }       12            13             52     12        7248          768           0.6    
+    {'Battery'}    {'ridge'}    {'S3 sensor strong'            }       15            16             64     15        7260          780           0.6    
+    {'Battery'}    {'ridge'}    {'T1 Twin only'                }        6             7             28      6        2424          264           0.4    
+    {'Battery'}    {'ridge'}    {'C2 strong + residual windows'}       19            20             80     19        9676         1036             1    
+    {'Battery'}    {'ridge'}    {'C3 strong + all Twin'        }       21            22             88     21        9684         1044             1    
+    {'Battery'}    {'nn'   }    {'S3 sensor strong'            }       15           137            548    128        7292          812           0.9    
+    {'Battery'}    {'nn'   }    {'T1 Twin only'                }        6            65            260     56        2456          296           0.5    
+    {'Battery'}    {'nn'   }    {'C2 strong + residual windows'}       19           169            676    160        9708         1068           1.3    
+    {'Battery'}    {'nn'   }    {'C3 strong + all Twin'        }       21           185            740    176        9716         1076           1.3    
+    {'Battery'}    {'trees'}    {'S3 sensor strong'            }       15         17771     2.1325e+05    480        7260          780           1.6    
+    {'Battery'}    {'trees'}    {'C3 strong + all Twin'        }       21         19614     2.3537e+05    480        9684         1044           1.9    
+
+
+=== ACCURACY (fixed ridge lambda = 1; NN = mean of 3 seeds; trees are reference only) ===
+       <strong>Asset</strong>         <strong>Model</strong>                 <strong>Candidate</strong>                <strong>MAE_A</strong>     <strong>MAE_B</strong>     <strong>MeanMAE</strong>    <strong>NN_seed_SD</strong>         <strong>Group</strong>           <strong>Selected</strong>  
+    <strong>___________</strong>    <strong>_________</strong>    <strong>________________________________</strong>    <strong>______</strong>    <strong>______</strong>    <strong>_______</strong>    <strong>__________</strong>    <strong>_______________</strong>    <strong>____________</strong>
+
+    {'PV'     }    {'ridge'}    {'S2 sensor + windows'         }    0.0633    0.0731    0.0682          NaN      {'sensor-only'}    {0×0 char  }
+    {'PV'     }    {'ridge'}    {'S3 sensor strong'            }    0.0642    0.0771    0.0706          NaN      {'sensor-only'}    {0×0 char  }
+    {'PV'     }    {'ridge'}    {'T1 Twin only'                }    0.0571    0.0644    0.0608          NaN      {'Twin-using' }    {0×0 char  }
+    {'PV'     }    {'ridge'}    {'C2 strong + residual windows'}    0.0399    0.0448    0.0423          NaN      {'Twin-using' }    {0×0 char  }
+    {'PV'     }    {'ridge'}    {'C3 strong + all Twin'        }    0.0392    0.0444    0.0418          NaN      {'Twin-using' }    {0×0 char  }
+    {'PV'     }    {'nn'   }    {'S3 sensor strong'            }    0.0399    0.0333    0.0366       0.0094      {'sensor-only'}    {'SELECTED'}
+    {'PV'     }    {'nn'   }    {'T1 Twin only'                }    0.1067    0.0304    0.0686       0.0555      {'Twin-using' }    {0×0 char  }
+    {'PV'     }    {'nn'   }    {'C2 strong + residual windows'}    0.0377    0.0166    0.0272       0.0051      {'Twin-using' }    {'SELECTED'}
+    {'PV'     }    {'nn'   }    {'C3 strong + all Twin'        }    0.0341    0.0194    0.0267       0.0013      {'Twin-using' }    {0×0 char  }
+    {'PV'     }    {'trees'}    {'S3 sensor strong'            }    0.2025    0.1045    0.1535          NaN      {'sensor-only'}    {0×0 char  }
+    {'PV'     }    {'trees'}    {'C3 strong + all Twin'        }    0.1568     0.015    0.0859          NaN      {'Twin-using' }    {0×0 char  }
+    {'Battery'}    {'ridge'}    {'S2 sensor + windows'         }    0.2374    0.3035    0.2704          NaN      {'sensor-only'}    {'SELECTED'}
+    {'Battery'}    {'ridge'}    {'S3 sensor strong'            }    0.2384    0.2992    0.2688          NaN      {'sensor-only'}    {0×0 char  }
+    {'Battery'}    {'ridge'}    {'T1 Twin only'                }    0.1972    0.2277    0.2124          NaN      {'Twin-using' }    {0×0 char  }
+    {'Battery'}    {'ridge'}    {'C2 strong + residual windows'}    0.1621    0.1548    0.1585          NaN      {'Twin-using' }    {'SELECTED'}
+    {'Battery'}    {'ridge'}    {'C3 strong + all Twin'        }    0.1611    0.1518    0.1565          NaN      {'Twin-using' }    {0×0 char  }
+    {'Battery'}    {'nn'   }    {'S3 sensor strong'            }    0.2933     0.324    0.3087       0.0226      {'sensor-only'}    {0×0 char  }
+    {'Battery'}    {'nn'   }    {'T1 Twin only'                }    0.2059    0.1944    0.2001       0.0019      {'Twin-using' }    {0×0 char  }
+    {'Battery'}    {'nn'   }    {'C2 strong + residual windows'}    0.1786    0.2098    0.1942       0.0207      {'Twin-using' }    {0×0 char  }
+    {'Battery'}    {'nn'   }    {'C3 strong + all Twin'        }    0.1784    0.2164    0.1974       0.0195      {'Twin-using' }    {0×0 char  }
+    {'Battery'}    {'trees'}    {'S3 sensor strong'            }    0.2561    0.3177    0.2869          NaN      {'sensor-only'}    {0×0 char  }
+    {'Battery'}    {'trees'}    {'C3 strong + all Twin'        }    0.1771    0.1991    0.1881          NaN      {'Twin-using' }    {0×0 char  }
+
+
+=== IS THE TWIN WORTH ITS COST? (selected model of each group) ===
+PV: sensor-only  nn S3 sensor strong: error 0.0366, flash 676 B, RAM 9708 B (10 Hz) / 1068 B (1 Hz), 1.1 kFLOP/s
+PV: Twin-using   nn C2 strong + residual windows: error 0.0272, flash 932 B, RAM 14540 B (10 Hz) / 1580 B (1 Hz), 4.8 kFLOP/s
+PV: error reduced by 26% for 4.4x the flops per second
+
+Battery: sensor-only  ridge S2 sensor + windows: error 0.2704, flash 52 B, RAM 7248 B (10 Hz) / 768 B (1 Hz), 0.6 kFLOP/s
+Battery: Twin-using   ridge C2 strong + residual windows: error 0.1585, flash 80 B, RAM 9676 B (10 Hz) / 1036 B (1 Hz), 1.0 kFLOP/s
+Battery: error reduced by 41% for 1.7x the flops per second
+
+Saved Stage10_TinyML_Estimates.csv
+--- Stage10_tinyml finished in 39.8 s ---
+
+=== Stage10_final_table ===
+
+=== FULL METRICS (every row, both regimes) ===
+       <strong>Asset</strong>       <strong>Regime</strong>      <strong>RowKey</strong>         <strong>Model</strong>      <strong>FeatureSet</strong>     <strong>MAE</strong>       <strong>RMSE</strong>       <strong>R2</strong>      <strong>nRMSE</strong>      <strong>Bias</strong>      <strong>MaxAE</strong>     <strong>Spearman</strong>
+    <strong>___________</strong>    <strong>______</strong>    <strong>___________</strong>    <strong>_________</strong>    <strong>__________</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>_______</strong>    <strong>______</strong>    <strong>________</strong>
+
+    {'PV'     }    {'A'}     {'base'   }    {'const'}    {0×0 char}      0.25      0.25         0       0.5          0      0.25       NaN  
+    {'PV'     }    {'A'}     {'sensR'  }    {'ridge'}    {'S2'    }    0.0633    0.0779     0.903    0.1557    -0.0196    0.3284     0.866  
+    {'PV'     }    {'A'}     {'sensSel'}    {'nn'   }    {'S3'    }    0.0317    0.0483     0.963    0.0967     0.0012    0.3779     0.866  
+    {'PV'     }    {'A'}     {'twin'   }    {'ridge'}    {'T1'    }    0.0571    0.0743     0.912    0.1487    -0.0013      0.25     0.866  
+    {'PV'     }    {'A'}     {'c1'     }    {'ridge'}    {'C1'    }    0.0475     0.077     0.905     0.154    -0.0062     0.656     0.852  
+    {'PV'     }    {'A'}     {'c2'     }    {'ridge'}    {'C2'    }    0.0399    0.0667     0.929    0.1334    -0.0046    0.4855     0.863  
+    {'PV'     }    {'A'}     {'full'   }    {'nn'   }    {'C2'    }    0.0332    0.0422     0.971    0.0845    -0.0163    0.1805     0.866  
+    {'PV'     }    {'B'}     {'base'   }    {'const'}    {0×0 char}       0.3    0.3536         0    0.3536          0       0.5       NaN  
+    {'PV'     }    {'B'}     {'sensR'  }    {'ridge'}    {'S2'    }    0.0731    0.1066     0.909    0.1066    -0.0085    0.4124      0.95  
+    {'PV'     }    {'B'}     {'sensSel'}    {'nn'   }    {'S3'    }    0.0335    0.0658     0.965    0.0658     0.0091     0.381     0.968  
+    {'PV'     }    {'B'}     {'twin'   }    {'ridge'}    {'T1'    }    0.0644    0.0906     0.934    0.0906    -0.0074    0.3408     0.972  
+    {'PV'     }    {'B'}     {'c1'     }    {'ridge'}    {'C1'    }     0.051    0.0926     0.931    0.0926     0.0079    0.6323     0.956  
+    {'PV'     }    {'B'}     {'c2'     }    {'ridge'}    {'C2'    }    0.0448    0.0795     0.949    0.0795     0.0051    0.4648     0.963  
+    {'PV'     }    {'B'}     {'full'   }    {'nn'   }    {'C2'    }    0.0181    0.0312     0.992    0.0312     0.0071    0.1763     0.981  
+    {'Battery'}    {'A'}     {'base'   }    {'const'}    {0×0 char}      0.25      0.25         0       0.5          0      0.25       NaN  
+    {'Battery'}    {'A'}     {'sensR'  }    {'ridge'}    {'S2'    }    0.2374     0.266    -0.132    0.5321     0.0039    0.6223     0.133  
+    {'Battery'}    {'A'}     {'sensSel'}    {'ridge'}    {'S2'    }    0.2374     0.266    -0.132    0.5321     0.0039    0.6223     0.133  
+    {'Battery'}    {'A'}     {'twin'   }    {'ridge'}    {'T1'    }    0.1972    0.2407     0.073    0.4813     -0.011      0.75     0.394  
+    {'Battery'}    {'A'}     {'c1'     }    {'ridge'}    {'C1'    }    0.1847    0.2291      0.16    0.4582    -0.0157      0.75      0.47  
+    {'Battery'}    {'A'}     {'c2'     }    {'ridge'}    {'C2'    }    0.1621    0.1982     0.372    0.3963    -0.0185    0.5238     0.647  
+    {'Battery'}    {'A'}     {'full'   }    {'ridge'}    {'C2'    }    0.1621    0.1982     0.372    0.3963    -0.0185    0.5238     0.647  
+    {'Battery'}    {'B'}     {'base'   }    {'const'}    {0×0 char}       0.3    0.3536         0    0.3536          0       0.5       NaN  
+    {'Battery'}    {'B'}     {'sensR'  }    {'ridge'}    {'S2'    }    0.3035    0.3564    -0.016    0.3564    -0.0286    0.8779     0.119  
+    {'Battery'}    {'B'}     {'sensSel'}    {'ridge'}    {'S2'    }    0.3035    0.3564    -0.016    0.3564    -0.0286    0.8779     0.119  
+    {'Battery'}    {'B'}     {'twin'   }    {'ridge'}    {'T1'    }    0.2277    0.2815     0.366    0.2815     0.0341         1     0.603  
+    {'Battery'}    {'B'}     {'c1'     }    {'ridge'}    {'C1'    }    0.2069    0.2528     0.489    0.2528    -0.0398    0.7783     0.733  
+    {'Battery'}    {'B'}     {'c2'     }    {'ridge'}    {'C2'    }    0.1548    0.2165     0.625    0.2165    -0.0606    0.8226     0.818  
+    {'Battery'}    {'B'}     {'full'   }    {'ridge'}    {'C2'    }    0.1548    0.2165     0.625    0.2165    -0.0606    0.8226     0.818  
+
+
+=== ABLATION TABLE (spec section 24), Regime A: unseen health levels ===
+                 <strong>Model_Input</strong>                  <strong>PV_MAE</strong>    <strong>PV_RMSE</strong>    <strong>PV_R2</strong>    <strong>Batt_MAE</strong>    <strong>Batt_RMSE</strong>    <strong>Batt_R2</strong>    <strong>PV_Features</strong>    <strong>Batt_Features</strong>    <strong>PV_Size_B</strong>    <strong>Batt_Size_B</strong>
+    <strong>______________________________________</strong>    <strong>______</strong>    <strong>_______</strong>    <strong>_____</strong>    <strong>________</strong>    <strong>_________</strong>    <strong>_______</strong>    <strong>___________</strong>    <strong>_____________</strong>    <strong>_________</strong>    <strong>___________</strong>
+
+    {'Baseline predictor (training mean)'}      0.25      0.25         0       0.25        0.25           0          0               0               4            4     
+    {'Sensor-only, ridge'                }    0.0633    0.0779     0.903     0.2374       0.266      -0.132         16              12              68           52     
+    {'Sensor-only, selected'             }    0.0317    0.0483     0.963     0.2374       0.266      -0.132         19              12             676           52     
+    {'Twin-only, ridge'                  }    0.0571    0.0743     0.912     0.1972      0.2407       0.073         12               6              52           28     
+    {'Sensor + raw residual, ridge'      }    0.0475     0.077     0.905     0.1847      0.2291        0.16         21              16              88           68     
+    {'Sensor + temporal residual, ridge' }    0.0399    0.0667     0.929     0.1621      0.1982       0.372         27              19             112           80     
+    {'Full selected Sensor + Twin'       }    0.0332    0.0422     0.971     0.1621      0.1982       0.372         27              19             932           80     
+
+
+=== ABLATION TABLE (spec section 24), Regime B: unseen operating profile ===
+                 <strong>Model_Input</strong>                  <strong>PV_MAE</strong>    <strong>PV_RMSE</strong>    <strong>PV_R2</strong>    <strong>Batt_MAE</strong>    <strong>Batt_RMSE</strong>    <strong>Batt_R2</strong>    <strong>PV_Features</strong>    <strong>Batt_Features</strong>    <strong>PV_Size_B</strong>    <strong>Batt_Size_B</strong>
+    <strong>______________________________________</strong>    <strong>______</strong>    <strong>_______</strong>    <strong>_____</strong>    <strong>________</strong>    <strong>_________</strong>    <strong>_______</strong>    <strong>___________</strong>    <strong>_____________</strong>    <strong>_________</strong>    <strong>___________</strong>
+
+    {'Baseline predictor (training mean)'}       0.3    0.3536         0        0.3      0.3536           0          0               0               4            4     
+    {'Sensor-only, ridge'                }    0.0731    0.1066     0.909     0.3035      0.3564      -0.016         16              12              68           52     
+    {'Sensor-only, selected'             }    0.0335    0.0658     0.965     0.3035      0.3564      -0.016         19              12             676           52     
+    {'Twin-only, ridge'                  }    0.0644    0.0906     0.934     0.2277      0.2815       0.366         12               6              52           28     
+    {'Sensor + raw residual, ridge'      }     0.051    0.0926     0.931     0.2069      0.2528       0.489         21              16              88           68     
+    {'Sensor + temporal residual, ridge' }    0.0448    0.0795     0.949     0.1548      0.2165       0.625         27              19             112           80     
+    {'Full selected Sensor + Twin'       }    0.0181    0.0312     0.992     0.1548      0.2165       0.625         27              19             932           80     
+
+
+Notes: size = float32 parameters in bytes. "Selected" rows use the neural network for PV (single seed 1) and ridge for the battery.
+The baseline predictor has no features and no meaningful Spearman correlation (NaN).
+Saved Stage10_Final_Metrics.csv, Stage10_Ablation_Table_A/B.csv, Stage10_Predictions.mat
+--- Stage10_final_table finished in 3.7 s ---
+
+=== Stage13_eval_faults ===
+
+=== D1: overall error, clean vs faulted (trees in Regime A cannot interpolate, ignore those rows) ===
+       <strong>Asset</strong>              <strong>Regime</strong>              <strong>Model</strong>      <strong>MAE_sensor_clean</strong>    <strong>MAE_sensor_fault</strong>    <strong>MAE_twin_clean</strong>    <strong>MAE_twin_fault</strong>    <strong>Sensor_damage</strong>    <strong>Twin_damage</strong>    <strong>Twin_better_when_faulted</strong>
+    <strong>___________</strong>    <strong>_____________________</strong>    <strong>_________</strong>    <strong>________________</strong>    <strong>________________</strong>    <strong>______________</strong>    <strong>______________</strong>    <strong>_____________</strong>    <strong>___________</strong>    <strong>________________________</strong>
+
+    {'PV'     }    {'A: unseen levels' }    {'ridge'}         0.0642              0.1765             0.0392            0.1677           0.1124          0.1285               {'yes'}         
+    {'PV'     }    {'A: unseen levels' }    {'trees'}         0.2011               0.228             0.1649            0.1999            0.027           0.035               {'yes'}         
+    {'PV'     }    {'B: unseen profile'}    {'ridge'}         0.0771               0.132             0.0444            0.0961           0.0549          0.0517               {'yes'}         
+    {'PV'     }    {'B: unseen profile'}    {'trees'}          0.105              0.1465             0.0145            0.0847           0.0415          0.0703               {'yes'}         
+    {'Battery'}    {'A: unseen levels' }    {'ridge'}         0.2384              0.3617             0.1611            0.4045           0.1232          0.2434               {'no' }         
+    {'Battery'}    {'A: unseen levels' }    {'trees'}         0.2518              0.2948             0.1796            0.3018            0.043          0.1223               {'no' }         
+    {'Battery'}    {'B: unseen profile'}    {'ridge'}         0.2992              0.3943             0.1518            0.3362           0.0951          0.1843               {'yes'}         
+    {'Battery'}    {'B: unseen profile'}    {'trees'}         0.3114              0.3273             0.1988            0.2694           0.0159          0.0706               {'yes'}         
+
+
+=== D2: ridge, broken down by fault type and sensor channel (test runs only) ===
+       <strong>Asset</strong>              <strong>Regime</strong>               <strong>GroupBy</strong>          <strong>Group</strong>      <strong>nRuns</strong>    <strong>MAE_sensor_clean</strong>    <strong>MAE_sensor_fault</strong>    <strong>MAE_twin_clean</strong>    <strong>MAE_twin_fault</strong>    <strong>Better_when_faulted</strong>
+    <strong>___________</strong>    <strong>_____________________</strong>    <strong>______________</strong>    <strong>_________</strong>    <strong>_____</strong>    <strong>________________</strong>    <strong>________________</strong>    <strong>______________</strong>    <strong>______________</strong>    <strong>___________________</strong>
+
+    {'PV'     }    {'A: unseen levels' }    {'ALL'       }    {'all'  }     40           0.064               0.177              0.039             0.168             {'Twin'  }     
+    {'PV'     }    {'A: unseen levels' }    {'fault type'}    {'bias' }     12           0.076               0.275              0.042             0.201             {'Twin'  }     
+    {'PV'     }    {'A: unseen levels' }    {'fault type'}    {'stuck'}      9           0.086               0.218              0.059             0.232             {'Sensor'}     
+    {'PV'     }    {'A: unseen levels' }    {'fault type'}    {'noise'}     10           0.054                0.07              0.025             0.116             {'Sensor'}     
+    {'PV'     }    {'A: unseen levels' }    {'fault type'}    {'drift'}      9           0.039               0.123              0.031             0.117             {'Twin'  }     
+    {'PV'     }    {'A: unseen levels' }    {'channel'   }    {'G'    }      8           0.064               0.233               0.03             0.219             {'Twin'  }     
+    {'PV'     }    {'A: unseen levels' }    {'channel'   }    {'I'    }     11           0.085               0.294              0.058             0.289             {'Twin'  }     
+    {'PV'     }    {'A: unseen levels' }    {'channel'   }    {'Tc'   }     12           0.048               0.072              0.029             0.079             {'Sensor'}     
+    {'PV'     }    {'A: unseen levels' }    {'channel'   }    {'V'    }      9            0.06               0.122              0.039             0.092             {'Twin'  }     
+    {'PV'     }    {'B: unseen profile'}    {'ALL'       }    {'all'  }     25           0.077               0.132              0.044             0.096             {'Twin'  }     
+    {'PV'     }    {'B: unseen profile'}    {'fault type'}    {'bias' }      4           0.071               0.075              0.035              0.06             {'Twin'  }     
+    {'PV'     }    {'B: unseen profile'}    {'fault type'}    {'stuck'}      6           0.137               0.228              0.094             0.215             {'Twin'  }     
+    {'PV'     }    {'B: unseen profile'}    {'fault type'}    {'noise'}      9           0.056               0.073              0.026             0.049             {'Twin'  }     
+    {'PV'     }    {'B: unseen profile'}    {'fault type'}    {'drift'}      6           0.053               0.163              0.028             0.072             {'Twin'  }     
+    {'PV'     }    {'B: unseen profile'}    {'channel'   }    {'G'    }      5           0.052               0.094              0.027             0.078             {'Twin'  }     
+    {'PV'     }    {'B: unseen profile'}    {'channel'   }    {'I'    }      6           0.111               0.237               0.07              0.17             {'Twin'  }     
+    {'PV'     }    {'B: unseen profile'}    {'channel'   }    {'Tc'   }      6           0.076               0.108              0.035              0.09             {'Twin'  }     
+    {'PV'     }    {'B: unseen profile'}    {'channel'   }    {'V'    }      8           0.068               0.095              0.043             0.057             {'Twin'  }     
+    {'Battery'}    {'A: unseen levels' }    {'ALL'       }    {'all'  }     40           0.238               0.362              0.161             0.404             {'Sensor'}     
+    {'Battery'}    {'A: unseen levels' }    {'fault type'}    {'bias' }      8           0.196               0.196              0.162             0.496             {'Sensor'}     
+    {'Battery'}    {'A: unseen levels' }    {'fault type'}    {'stuck'}     13           0.238               0.299              0.171             0.292             {'Twin'  }     
+    {'Battery'}    {'A: unseen levels' }    {'fault type'}    {'noise'}      6           0.251               0.413              0.149             0.365             {'Twin'  }     
+    {'Battery'}    {'A: unseen levels' }    {'fault type'}    {'drift'}     13           0.259               0.502              0.156             0.479             {'Twin'  }     
+    {'Battery'}    {'A: unseen levels' }    {'channel'   }    {'I'    }     13           0.245                0.26              0.124             0.298             {'Sensor'}     
+    {'Battery'}    {'A: unseen levels' }    {'channel'   }    {'T'    }     14           0.239                0.39              0.172             0.397             {'Sensor'}     
+    {'Battery'}    {'A: unseen levels' }    {'channel'   }    {'V'    }     13           0.232               0.434              0.186             0.519             {'Sensor'}     
+    {'Battery'}    {'B: unseen profile'}    {'ALL'       }    {'all'  }     25           0.299               0.394              0.152             0.336             {'Twin'  }     
+    {'Battery'}    {'B: unseen profile'}    {'fault type'}    {'bias' }      8            0.31               0.307              0.117             0.385             {'Sensor'}     
+    {'Battery'}    {'B: unseen profile'}    {'fault type'}    {'stuck'}      6           0.271               0.476              0.181             0.266             {'Twin'  }     
+    {'Battery'}    {'B: unseen profile'}    {'fault type'}    {'noise'}      5           0.328               0.411              0.166              0.35             {'Twin'  }     
+    {'Battery'}    {'B: unseen profile'}    {'fault type'}    {'drift'}      6            0.29               0.415              0.157             0.329             {'Twin'  }     
+    {'Battery'}    {'B: unseen profile'}    {'channel'   }    {'I'    }      4           0.273               0.346              0.142             0.308             {'Twin'  }     
+    {'Battery'}    {'B: unseen profile'}    {'channel'   }    {'T'    }     11           0.307               0.359              0.139             0.233             {'Twin'  }     
+    {'Battery'}    {'B: unseen profile'}    {'channel'   }    {'V'    }     10           0.301               0.453               0.17             0.461             {'Sensor'}     
+
+
+=== D3: does the Twin residual flag the fault? (flag = per-run mean |residual| above the largest clean run) ===
+       <strong>Asset</strong>          <strong>GroupBy</strong>          <strong>Group</strong>      <strong>nRuns</strong>    <strong>Pct_faults_flagged</strong>    <strong>Median_residual_ratio</strong>
+    <strong>___________</strong>    <strong>______________</strong>    <strong>_________</strong>    <strong>_____</strong>    <strong>__________________</strong>    <strong>_____________________</strong>
+
+    {'PV'     }    {'ALL'       }    {'all'  }     100              5                    1.08         
+    {'PV'     }    {'fault type'}    {'bias' }      25              0                    0.93         
+    {'PV'     }    {'fault type'}    {'stuck'}      25             16                    1.26         
+    {'PV'     }    {'fault type'}    {'noise'}      25              0                    1.05         
+    {'PV'     }    {'fault type'}    {'drift'}      25              4                    0.92         
+    {'PV'     }    {'channel'   }    {'G'    }      28              7                     1.6         
+    {'PV'     }    {'channel'   }    {'I'    }      24             13                     1.6         
+    {'PV'     }    {'channel'   }    {'Tc'   }      24              0                    0.95         
+    {'PV'     }    {'channel'   }    {'V'    }      24              0                    0.92         
+    {'Battery'}    {'ALL'       }    {'all'  }     100             42                    1.07         
+    {'Battery'}    {'fault type'}    {'bias' }      25             40                    1.07         
+    {'Battery'}    {'fault type'}    {'stuck'}      25             52                     1.6         
+    {'Battery'}    {'fault type'}    {'noise'}      25             40                    1.05         
+    {'Battery'}    {'fault type'}    {'drift'}      25             36                    1.07         
+    {'Battery'}    {'channel'   }    {'I'    }      32             19                    1.07         
+    {'Battery'}    {'channel'   }    {'T'    }      32              0                       1         
+    {'Battery'}    {'channel'   }    {'V'    }      36            100                    5.36         
+
+--- Stage13_eval_faults finished in 20.2 s ---
+
+=== Stage10_plots ===
+STEP FAILED: Stage10_plots
+   The value of 'destination' is invalid. Unable to create output file 'Stage10_figures/Fig01_PV_pred_vs_true.png', No such file or directory.
+Stage 10 master started 10-Oct-2026 02:28:53, MATLAB 2025b, folder /home/inspiredkhalid/workspace/Matlab_workspace/Reformable_AI
+Using the existing reference snapshot in Stage10_repro_snapshot.
+
+=== Stage10_ml_compare ===
+PV | A: unseen levels | train rows 5460, test rows 3640 (60 / 40 runs)
+PV | B: unseen profile | train rows 6825, test rows 2275 (75 / 25 runs)
+Battery | A: unseen levels | train rows 5460, test rows 3640 (60 / 40 runs)
+Battery | B: unseen profile | train rows 6825, test rows 2275 (75 / 25 runs)
+       <strong>Asset</strong>              <strong>Regime</strong>               <strong>Features</strong>          <strong>Model</strong>       <strong>MAE</strong>        <strong>R2</strong>  
+    <strong>___________</strong>    <strong>_____________________</strong>    <strong>_______________</strong>    <strong>_________</strong>    <strong>______</strong>    <strong>______</strong>
+
+    {'PV'     }    {'A: unseen levels' }    {'time only'  }    {'trees'}      0.25         0
+    {'PV'     }    {'A: unseen levels' }    {'sensor-only'}    {'trees'}    0.1728     0.233
+    {'PV'     }    {'A: unseen levels' }    {'sensor-only'}    {'ridge'}    0.0633     0.903
+    {'PV'     }    {'A: unseen levels' }    {'sensor+Twin'}    {'trees'}    0.2139     0.217
+    {'PV'     }    {'A: unseen levels' }    {'sensor+Twin'}    {'ridge'}    0.0411     0.954
+    {'PV'     }    {'B: unseen profile'}    {'time only'  }    {'trees'}    0.3004         0
+    {'PV'     }    {'B: unseen profile'}    {'sensor-only'}    {'trees'}    0.2179     0.484
+    {'PV'     }    {'B: unseen profile'}    {'sensor-only'}    {'ridge'}    0.0731     0.909
+    {'PV'     }    {'B: unseen profile'}    {'sensor+Twin'}    {'trees'}    0.0164      0.99
+    {'PV'     }    {'B: unseen profile'}    {'sensor+Twin'}    {'ridge'}    0.0482     0.963
+    {'Battery'}    {'A: unseen levels' }    {'time only'  }    {'trees'}      0.25         0
+    {'Battery'}    {'A: unseen levels' }    {'sensor-only'}    {'trees'}    0.2537    -0.458
+    {'Battery'}    {'A: unseen levels' }    {'sensor-only'}    {'ridge'}    0.2374    -0.132
+    {'Battery'}    {'A: unseen levels' }    {'sensor+Twin'}    {'trees'}    0.1748     0.217
+    {'Battery'}    {'A: unseen levels' }    {'sensor+Twin'}    {'ridge'}    0.1599     0.401
+    {'Battery'}    {'B: unseen profile'}    {'time only'  }    {'trees'}    0.3004         0
+    {'Battery'}    {'B: unseen profile'}    {'sensor-only'}    {'trees'}     0.315    -0.104
+    {'Battery'}    {'B: unseen profile'}    {'sensor-only'}    {'ridge'}    0.3035    -0.016
+    {'Battery'}    {'B: unseen profile'}    {'sensor+Twin'}    {'trees'}    0.1988     0.505
+    {'Battery'}    {'B: unseen profile'}    {'sensor+Twin'}    {'ridge'}    0.1578     0.626
+
+--- Stage10_ml_compare finished in 34.5 s ---
+
+=== Stage10_cv_compare ===
+       <strong>Asset</strong>                  <strong>Scheme</strong>                 <strong>Model</strong>          <strong>Features</strong>         <strong>pooledMAE</strong>    <strong>pooledR2</strong>     <strong>foldMAE_mean_std</strong> 
+    <strong>___________</strong>    <strong>____________________________</strong>    <strong>_________</strong>    <strong>_________________</strong>    <strong>_________</strong>    <strong>________</strong>    <strong>__________________</strong>
+
+    {'PV'     }    {'A: leave-one-level-out'  }    {'trees'}    {'sensor-basic' }     0.1845       -0.174     {'0.184 +- 0.043'}
+    {'PV'     }    {'A: leave-one-level-out'  }    {'trees'}    {'sensor-strong'}     0.1895       -0.106     {'0.189 +- 0.015'}
+    {'PV'     }    {'A: leave-one-level-out'  }    {'trees'}    {'strong+Twin'  }     0.1553        0.261     {'0.155 +- 0.050'}
+    {'PV'     }    {'A: leave-one-level-out'  }    {'ridge'}    {'sensor-basic' }     0.0669        0.831     {'0.067 +- 0.003'}
+    {'PV'     }    {'A: leave-one-level-out'  }    {'ridge'}    {'sensor-strong'}     0.0661        0.803     {'0.066 +- 0.002'}
+    {'PV'     }    {'A: leave-one-level-out'  }    {'ridge'}    {'strong+Twin'  }      0.041        0.908     {'0.041 +- 0.003'}
+    {'PV'     }    {'B: leave-one-profile-out'}    {'trees'}    {'sensor-basic' }     0.2096        0.423     {'0.210 +- 0.032'}
+    {'PV'     }    {'B: leave-one-profile-out'}    {'trees'}    {'sensor-strong'}      0.103        0.778     {'0.103 +- 0.012'}
+    {'PV'     }    {'B: leave-one-profile-out'}    {'trees'}    {'strong+Twin'  }     0.0206        0.981     {'0.021 +- 0.011'}
+    {'PV'     }    {'B: leave-one-profile-out'}    {'ridge'}    {'sensor-basic' }     0.0663        0.926     {'0.066 +- 0.015'}
+    {'PV'     }    {'B: leave-one-profile-out'}    {'ridge'}    {'sensor-strong'}     0.0644        0.926     {'0.064 +- 0.013'}
+    {'PV'     }    {'B: leave-one-profile-out'}    {'ridge'}    {'strong+Twin'  }     0.0359        0.973     {'0.036 +- 0.010'}
+    {'Battery'}    {'A: leave-one-level-out'  }    {'trees'}    {'sensor-basic' }     0.2671         -1.3     {'0.267 +- 0.097'}
+    {'Battery'}    {'A: leave-one-level-out'  }    {'trees'}    {'sensor-strong'}     0.2645       -1.326     {'0.264 +- 0.089'}
+    {'Battery'}    {'A: leave-one-level-out'  }    {'trees'}    {'strong+Twin'  }     0.2045       -0.443     {'0.204 +- 0.017'}
+    {'Battery'}    {'A: leave-one-level-out'  }    {'ridge'}    {'sensor-basic' }     0.2202       -0.617     {'0.220 +- 0.123'}
+    {'Battery'}    {'A: leave-one-level-out'  }    {'ridge'}    {'sensor-strong'}     0.2204       -0.632     {'0.220 +- 0.122'}
+    {'Battery'}    {'A: leave-one-level-out'  }    {'ridge'}    {'strong+Twin'  }     0.1526        0.082     {'0.153 +- 0.065'}
+    {'Battery'}    {'B: leave-one-profile-out'}    {'trees'}    {'sensor-basic' }     0.3098       -0.099     {'0.310 +- 0.034'}
+    {'Battery'}    {'B: leave-one-profile-out'}    {'trees'}    {'sensor-strong'}     0.3062       -0.077     {'0.306 +- 0.030'}
+    {'Battery'}    {'B: leave-one-profile-out'}    {'trees'}    {'strong+Twin'  }     0.2266        0.396     {'0.227 +- 0.043'}
+    {'Battery'}    {'B: leave-one-profile-out'}    {'ridge'}    {'sensor-basic' }      0.308        -0.04     {'0.308 +- 0.005'}
+    {'Battery'}    {'B: leave-one-profile-out'}    {'ridge'}    {'sensor-strong'}     0.3108       -0.061     {'0.311 +- 0.008'}
+    {'Battery'}    {'B: leave-one-profile-out'}    {'ridge'}    {'strong+Twin'  }     0.1925        0.458     {'0.193 +- 0.095'}
+
+       <strong>Asset</strong>                  <strong>Scheme</strong>                 <strong>Model</strong>      <strong>Twin_beats_strong_sensor_in_folds</strong>
+    <strong>___________</strong>    <strong>____________________________</strong>    <strong>_________</strong>    <strong>_________________________________</strong>
+
+    {'PV'     }    {'A: leave-one-level-out'  }    {'trees'}               {'2 of 3'}            
+    {'PV'     }    {'A: leave-one-level-out'  }    {'ridge'}               {'3 of 3'}            
+    {'PV'     }    {'B: leave-one-profile-out'}    {'trees'}               {'4 of 4'}            
+    {'PV'     }    {'B: leave-one-profile-out'}    {'ridge'}               {'4 of 4'}            
+    {'Battery'}    {'A: leave-one-level-out'  }    {'trees'}               {'2 of 3'}            
+    {'Battery'}    {'A: leave-one-level-out'  }    {'ridge'}               {'3 of 3'}            
+    {'Battery'}    {'B: leave-one-profile-out'}    {'trees'}               {'4 of 4'}            
+    {'Battery'}    {'B: leave-one-profile-out'}    {'ridge'}               {'4 of 4'}            
+
+--- Stage10_cv_compare finished in 81.3 s ---
+
+=== Stage10_ablation ===
+
+=== ABLATION (ridge, test MAE; lower is better) ===
+       <strong>Asset</strong>              <strong>Regime</strong>                               <strong>FeatureSet</strong>                       <strong>nFeatures</strong>     <strong>MAE</strong>        <strong>R2</strong>  
+    <strong>___________</strong>    <strong>_____________________</strong>    <strong>________________________________________________</strong>    <strong>_________</strong>    <strong>______</strong>    <strong>______</strong>
+
+    {'PV'     }    {'A: unseen levels' }    {'S1 sensor instantaneous'                     }        4        0.0899     0.786
+    {'PV'     }    {'A: unseen levels' }    {'S2 sensor + sensor windows'                  }       16        0.0632     0.903
+    {'PV'     }    {'A: unseen levels' }    {'S3 sensor strong (S + ratios)'               }       19        0.0774     0.786
+    {'PV'     }    {'A: unseen levels' }    {'T1 Twin only: all Twin features'             }       12        0.0567     0.913
+    {'PV'     }    {'A: unseen levels' }    {'T2 Twin only: raw residuals'                 }        2        0.1081     0.668
+    {'PV'     }    {'A: unseen levels' }    {'T3 Twin only: residual windows'              }        8        0.0715     0.837
+    {'PV'     }    {'A: unseen levels' }    {'T4 Twin only: instantaneous'                 }        4        0.0796     0.838
+    {'PV'     }    {'A: unseen levels' }    {'C1 strong + raw residuals'                   }       21        0.0475     0.905
+    {'PV'     }    {'A: unseen levels' }    {'C2 strong + residual windows'                }       27        0.0399     0.929
+    {'PV'     }    {'A: unseen levels' }    {'C3 strong + all Twin'                        }       31        0.0392      0.93
+    {'PV'     }    {'A: unseen levels' }    {'C4 instantaneous sensor + instantaneous Twin'}        8        0.0759     0.854
+    {'PV'     }    {'B: unseen profile'}    {'S1 sensor instantaneous'                     }        4        0.0884     0.861
+    {'PV'     }    {'B: unseen profile'}    {'S2 sensor + sensor windows'                  }       16        0.0736     0.908
+    {'PV'     }    {'B: unseen profile'}    {'S3 sensor strong (S + ratios)'               }       19         0.081     0.871
+    {'PV'     }    {'B: unseen profile'}    {'T1 Twin only: all Twin features'             }       12        0.0642     0.934
+    {'PV'     }    {'B: unseen profile'}    {'T2 Twin only: raw residuals'                 }        2        0.1105     0.809
+    {'PV'     }    {'B: unseen profile'}    {'T3 Twin only: residual windows'              }        8         0.083     0.885
+    {'PV'     }    {'B: unseen profile'}    {'T4 Twin only: instantaneous'                 }        4        0.0796     0.898
+    {'PV'     }    {'B: unseen profile'}    {'C1 strong + raw residuals'                   }       21        0.0522     0.929
+    {'PV'     }    {'B: unseen profile'}    {'C2 strong + residual windows'                }       27         0.046     0.945
+    {'PV'     }    {'B: unseen profile'}    {'C3 strong + all Twin'                        }       31        0.0458     0.945
+    {'PV'     }    {'B: unseen profile'}    {'C4 instantaneous sensor + instantaneous Twin'}        8        0.0738     0.912
+    {'Battery'}    {'A: unseen levels' }    {'S1 sensor instantaneous'                     }        3        0.2536    -0.055
+    {'Battery'}    {'A: unseen levels' }    {'S2 sensor + sensor windows'                  }       12        0.2373    -0.133
+    {'Battery'}    {'A: unseen levels' }    {'S3 sensor strong (S + ratios)'               }       15        0.2384    -0.144
+    {'Battery'}    {'A: unseen levels' }    {'T1 Twin only: all Twin features'             }        6        0.1972     0.073
+    {'Battery'}    {'A: unseen levels' }    {'T2 Twin only: raw residuals'                 }        1        0.2482    -0.026
+    {'Battery'}    {'A: unseen levels' }    {'T3 Twin only: residual windows'              }        4        0.1984     0.073
+    {'Battery'}    {'A: unseen levels' }    {'T4 Twin only: instantaneous'                 }        2        0.2476    -0.023
+    {'Battery'}    {'A: unseen levels' }    {'C1 strong + raw residuals'                   }       16        0.1845     0.154
+    {'Battery'}    {'A: unseen levels' }    {'C2 strong + residual windows'                }       19        0.1621     0.372
+    {'Battery'}    {'A: unseen levels' }    {'C3 strong + all Twin'                        }       21        0.1602     0.385
+    {'Battery'}    {'A: unseen levels' }    {'C4 instantaneous sensor + instantaneous Twin'}        5        0.2512    -0.062
+    {'Battery'}    {'B: unseen profile'}    {'S1 sensor instantaneous'                     }        3         0.309    -0.045
+    {'Battery'}    {'B: unseen profile'}    {'S2 sensor + sensor windows'                  }       12        0.3035    -0.016
+    {'Battery'}    {'B: unseen profile'}    {'S3 sensor strong (S + ratios)'               }       15        0.2992     0.007
+    {'Battery'}    {'B: unseen profile'}    {'T1 Twin only: all Twin features'             }        6        0.2277     0.366
+    {'Battery'}    {'B: unseen profile'}    {'T2 Twin only: raw residuals'                 }        1         0.302      0.01
+    {'Battery'}    {'B: unseen profile'}    {'T3 Twin only: residual windows'              }        4        0.2289     0.365
+    {'Battery'}    {'B: unseen profile'}    {'T4 Twin only: instantaneous'                 }        2        0.3018     0.011
+    {'Battery'}    {'B: unseen profile'}    {'C1 strong + raw residuals'                   }       16         0.203     0.501
+    {'Battery'}    {'B: unseen profile'}    {'C2 strong + residual windows'                }       19        0.1548     0.625
+    {'Battery'}    {'B: unseen profile'}    {'C3 strong + all Twin'                        }       21        0.1518     0.637
+    {'Battery'}    {'B: unseen profile'}    {'C4 instantaneous sensor + instantaneous Twin'}        5        0.3081    -0.032
+
+
+=== ABLATION (trees) ===
+       <strong>Asset</strong>              <strong>Regime</strong>                               <strong>FeatureSet</strong>                       <strong>nFeatures</strong>     <strong>nParams</strong>       <strong>MAE</strong>        <strong>R2</strong>  
+    <strong>___________</strong>    <strong>_____________________</strong>    <strong>________________________________________________</strong>    <strong>_________</strong>    <strong>__________</strong>    <strong>______</strong>    <strong>______</strong>
+
+    {'PV'     }    {'A: unseen levels' }    {'S1 sensor instantaneous'                     }        4             20760    0.1531     0.409
+    {'PV'     }    {'A: unseen levels' }    {'S2 sensor + sensor windows'                  }       16             16672    0.1823     0.173
+    {'PV'     }    {'A: unseen levels' }    {'S3 sensor strong (S + ratios)'               }       19              4938    0.2075     0.118
+    {'PV'     }    {'A: unseen levels' }    {'T1 Twin only: all Twin features'             }       12              1672    0.2114     0.224
+    {'PV'     }    {'A: unseen levels' }    {'T2 Twin only: raw residuals'                 }        2             26672    0.2079     0.226
+    {'PV'     }    {'A: unseen levels' }    {'T3 Twin only: residual windows'              }        8              2804    0.2202      0.17
+    {'PV'     }    {'A: unseen levels' }    {'T4 Twin only: instantaneous'                 }        4              5404    0.1913     0.333
+    {'PV'     }    {'A: unseen levels' }    {'C1 strong + raw residuals'                   }       21              3722    0.1416     0.562
+    {'PV'     }    {'A: unseen levels' }    {'C2 strong + residual windows'                }       27              1140    0.1491     0.503
+    {'PV'     }    {'A: unseen levels' }    {'C3 strong + all Twin'                        }       31              1182     0.158     0.488
+    {'PV'     }    {'A: unseen levels' }    {'C4 instantaneous sensor + instantaneous Twin'}        8              5014    0.1707     0.431
+    {'PV'     }    {'B: unseen profile'}    {'S1 sensor instantaneous'                     }        4             45730    0.1858     0.555
+    {'PV'     }    {'B: unseen profile'}    {'S2 sensor + sensor windows'                  }       16             34984     0.212     0.511
+    {'PV'     }    {'B: unseen profile'}    {'S3 sensor strong (S + ratios)'               }       19             17462    0.1056     0.808
+    {'PV'     }    {'B: unseen profile'}    {'T1 Twin only: all Twin features'             }       12             10174    0.0232     0.977
+    {'PV'     }    {'B: unseen profile'}    {'T2 Twin only: raw residuals'                 }        2             92844    0.1082     0.818
+    {'PV'     }    {'B: unseen profile'}    {'T3 Twin only: residual windows'              }        8             17998    0.0469     0.929
+    {'PV'     }    {'B: unseen profile'}    {'T4 Twin only: instantaneous'                 }        4             40208    0.0511     0.934
+    {'PV'     }    {'B: unseen profile'}    {'C1 strong + raw residuals'                   }       21             19240    0.0569     0.942
+    {'PV'     }    {'B: unseen profile'}    {'C2 strong + residual windows'                }       27              5110    0.0154     0.993
+    {'PV'     }    {'B: unseen profile'}    {'C3 strong + all Twin'                        }       31              5176    0.0142     0.992
+    {'PV'     }    {'B: unseen profile'}    {'C4 instantaneous sensor + instantaneous Twin'}        8             33148    0.0518     0.945
+    {'Battery'}    {'A: unseen levels' }    {'S1 sensor instantaneous'                     }        3             41968    0.2727    -0.745
+    {'Battery'}    {'A: unseen levels' }    {'S2 sensor + sensor windows'                  }       12             18122    0.2545    -0.449
+    {'Battery'}    {'A: unseen levels' }    {'S3 sensor strong (S + ratios)'               }       15             16484    0.2568    -0.573
+    {'Battery'}    {'A: unseen levels' }    {'T1 Twin only: all Twin features'             }        6             51022    0.2167    -0.187
+    {'Battery'}    {'A: unseen levels' }    {'T2 Twin only: raw residuals'                 }        1             99964    0.2639     -0.55
+    {'Battery'}    {'A: unseen levels' }    {'T3 Twin only: residual windows'              }        4             58210    0.2273    -0.225
+    {'Battery'}    {'A: unseen levels' }    {'T4 Twin only: instantaneous'                 }        2             82160    0.2901    -0.885
+    {'Battery'}    {'A: unseen levels' }    {'C1 strong + raw residuals'                   }       16             15488    0.2601    -0.636
+    {'Battery'}    {'A: unseen levels' }    {'C2 strong + residual windows'                }       19             15242    0.1757     0.221
+    {'Battery'}    {'A: unseen levels' }    {'C3 strong + all Twin'                        }       21             15266    0.1785     0.229
+    {'Battery'}    {'A: unseen levels' }    {'C4 instantaneous sensor + instantaneous Twin'}        5             25460    0.2671    -0.605
+    {'Battery'}    {'B: unseen profile'}    {'S1 sensor instantaneous'                     }        3             61180    0.3029    -0.092
+    {'Battery'}    {'B: unseen profile'}    {'S2 sensor + sensor windows'                  }       12             23270    0.3149    -0.103
+    {'Battery'}    {'B: unseen profile'}    {'S3 sensor strong (S + ratios)'               }       15             19186    0.3128    -0.119
+    {'Battery'}    {'B: unseen profile'}    {'T1 Twin only: all Twin features'             }        6             89944     0.224     0.423
+    {'Battery'}    {'B: unseen profile'}    {'T2 Twin only: raw residuals'                 }        1         1.258e+05    0.3254     -0.17
+    {'Battery'}    {'B: unseen profile'}    {'T3 Twin only: residual windows'              }        4        1.0378e+05    0.1878     0.562
+    {'Battery'}    {'B: unseen profile'}    {'T4 Twin only: instantaneous'                 }        2        1.1126e+05    0.3407    -0.307
+    {'Battery'}    {'B: unseen profile'}    {'C1 strong + raw residuals'                   }       16             18296    0.3075    -0.069
+    {'Battery'}    {'B: unseen profile'}    {'C2 strong + residual windows'                }       19             25112    0.1931     0.524
+    {'Battery'}    {'B: unseen profile'}    {'C3 strong + all Twin'                        }       21             24024    0.1974     0.527
+    {'Battery'}    {'B: unseen profile'}    {'C4 instantaneous sensor + instantaneous Twin'}        5             31462    0.3208    -0.201
+
+
+=== ABLATION (small neural network, 8 hidden units) ===
+       <strong>Asset</strong>              <strong>Regime</strong>                               <strong>FeatureSet</strong>                       <strong>nFeatures</strong>    <strong>nParams</strong>     <strong>MAE</strong>        <strong>R2</strong>  
+    <strong>___________</strong>    <strong>_____________________</strong>    <strong>________________________________________________</strong>    <strong>_________</strong>    <strong>_______</strong>    <strong>______</strong>    <strong>______</strong>
+
+    {'PV'     }    {'A: unseen levels' }    {'S1 sensor instantaneous'                     }        4           49      0.0737     0.858
+    {'PV'     }    {'A: unseen levels' }    {'S2 sensor + sensor windows'                  }       16          145       0.042     0.954
+    {'PV'     }    {'A: unseen levels' }    {'S3 sensor strong (S + ratios)'               }       19          169      0.0338     0.953
+    {'PV'     }    {'A: unseen levels' }    {'T1 Twin only: all Twin features'             }       12          113      0.0418     0.949
+    {'PV'     }    {'A: unseen levels' }    {'T2 Twin only: raw residuals'                 }        2           33      0.1892     0.325
+    {'PV'     }    {'A: unseen levels' }    {'T3 Twin only: residual windows'              }        8           81      0.1794     0.398
+    {'PV'     }    {'A: unseen levels' }    {'T4 Twin only: instantaneous'                 }        4           49      0.1277     0.621
+    {'PV'     }    {'A: unseen levels' }    {'C1 strong + raw residuals'                   }       21          185      0.0285     0.963
+    {'PV'     }    {'A: unseen levels' }    {'C2 strong + residual windows'                }       27          233      0.0296     0.978
+    {'PV'     }    {'A: unseen levels' }    {'C3 strong + all Twin'                        }       31          265      0.0404     0.964
+    {'PV'     }    {'A: unseen levels' }    {'C4 instantaneous sensor + instantaneous Twin'}        8           81      0.1624     0.463
+    {'PV'     }    {'B: unseen profile'}    {'S1 sensor instantaneous'                     }        4           49      0.0619     0.936
+    {'PV'     }    {'B: unseen profile'}    {'S2 sensor + sensor windows'                  }       16          145      0.0334     0.975
+    {'PV'     }    {'B: unseen profile'}    {'S3 sensor strong (S + ratios)'               }       19          169       0.034     0.967
+    {'PV'     }    {'B: unseen profile'}    {'T1 Twin only: all Twin features'             }       12          113      0.0305     0.985
+    {'PV'     }    {'B: unseen profile'}    {'T2 Twin only: raw residuals'                 }        2           33       0.111     0.834
+    {'PV'     }    {'B: unseen profile'}    {'T3 Twin only: residual windows'              }        8           81      0.0638      0.93
+    {'PV'     }    {'B: unseen profile'}    {'T4 Twin only: instantaneous'                 }        4           49      0.0648     0.935
+    {'PV'     }    {'B: unseen profile'}    {'C1 strong + raw residuals'                   }       21          185      0.0399     0.957
+    {'PV'     }    {'B: unseen profile'}    {'C2 strong + residual windows'                }       27          233      0.0198     0.991
+    {'PV'     }    {'B: unseen profile'}    {'C3 strong + all Twin'                        }       31          265      0.0215     0.989
+    {'PV'     }    {'B: unseen profile'}    {'C4 instantaneous sensor + instantaneous Twin'}        8           81      0.0655     0.935
+    {'Battery'}    {'A: unseen levels' }    {'S1 sensor instantaneous'                     }        3           41      0.2708     -0.63
+    {'Battery'}    {'A: unseen levels' }    {'S2 sensor + sensor windows'                  }       12          113      0.3153    -1.369
+    {'Battery'}    {'A: unseen levels' }    {'S3 sensor strong (S + ratios)'               }       15          137        0.32    -1.384
+    {'Battery'}    {'A: unseen levels' }    {'T1 Twin only: all Twin features'             }        6           65      0.2038    -0.072
+    {'Battery'}    {'A: unseen levels' }    {'T2 Twin only: raw residuals'                 }        1           25      0.2475    -0.029
+    {'Battery'}    {'A: unseen levels' }    {'T3 Twin only: residual windows'              }        4           49      0.2085    -0.061
+    {'Battery'}    {'A: unseen levels' }    {'T4 Twin only: instantaneous'                 }        2           33      0.2474    -0.176
+    {'Battery'}    {'A: unseen levels' }    {'C1 strong + raw residuals'                   }       16          145       0.236    -0.413
+    {'Battery'}    {'A: unseen levels' }    {'C2 strong + residual windows'                }       19          169      0.1794     0.153
+    {'Battery'}    {'A: unseen levels' }    {'C3 strong + all Twin'                        }       21          185      0.1787     0.135
+    {'Battery'}    {'A: unseen levels' }    {'C4 instantaneous sensor + instantaneous Twin'}        5           57      0.2976    -1.083
+    {'Battery'}    {'B: unseen profile'}    {'S1 sensor instantaneous'                     }        3           41      0.3616    -0.497
+    {'Battery'}    {'B: unseen profile'}    {'S2 sensor + sensor windows'                  }       12          113      0.4063    -0.954
+    {'Battery'}    {'B: unseen profile'}    {'S3 sensor strong (S + ratios)'               }       15          137      0.3391    -0.456
+    {'Battery'}    {'B: unseen profile'}    {'T1 Twin only: all Twin features'             }        6           65      0.2062      0.47
+    {'Battery'}    {'B: unseen profile'}    {'T2 Twin only: raw residuals'                 }        1           25      0.3024     0.008
+    {'Battery'}    {'B: unseen profile'}    {'T3 Twin only: residual windows'              }        4           49      0.1819     0.582
+    {'Battery'}    {'B: unseen profile'}    {'T4 Twin only: instantaneous'                 }        2           33      0.3039    -0.027
+    {'Battery'}    {'B: unseen profile'}    {'C1 strong + raw residuals'                   }       16          145      0.2749    -0.122
+    {'Battery'}    {'B: unseen profile'}    {'C2 strong + residual windows'                }       19          169      0.2622    -0.019
+    {'Battery'}    {'B: unseen profile'}    {'C3 strong + all Twin'                        }       21          185      0.2013      0.38
+    {'Battery'}    {'B: unseen profile'}    {'C4 instantaneous sensor + instantaneous Twin'}        5           57      0.3366     -0.36
+
+
+=== WEAR RANGE (ridge) ===
+       <strong>Asset</strong>              <strong>Regime</strong>                               <strong>FeatureSet</strong>                       <strong>MAE_early_D_lt_0p4</strong>    <strong>MAE_mid_D_0p4_to_0p6</strong>    <strong>MAE_advanced_D_gt_0p6</strong>
+    <strong>___________</strong>    <strong>_____________________</strong>    <strong>________________________________________________</strong>    <strong>__________________</strong>    <strong>____________________</strong>    <strong>_____________________</strong>
+
+    {'PV'     }    {'A: unseen levels' }    {'S1 sensor instantaneous'                     }          0.0926                    NaN                  0.0872        
+    {'PV'     }    {'A: unseen levels' }    {'S2 sensor + sensor windows'                  }          0.0618                    NaN                  0.0646        
+    {'PV'     }    {'A: unseen levels' }    {'S3 sensor strong (S + ratios)'               }          0.0835                    NaN                  0.0713        
+    {'PV'     }    {'A: unseen levels' }    {'T1 Twin only: all Twin features'             }          0.0501                    NaN                  0.0633        
+    {'PV'     }    {'A: unseen levels' }    {'T2 Twin only: raw residuals'                 }          0.0698                    NaN                  0.1464        
+    {'PV'     }    {'A: unseen levels' }    {'T3 Twin only: residual windows'              }          0.0336                    NaN                  0.1094        
+    {'PV'     }    {'A: unseen levels' }    {'T4 Twin only: instantaneous'                 }          0.0832                    NaN                   0.076        
+    {'PV'     }    {'A: unseen levels' }    {'C1 strong + raw residuals'                   }          0.0533                    NaN                  0.0418        
+    {'PV'     }    {'A: unseen levels' }    {'C2 strong + residual windows'                }          0.0418                    NaN                   0.038        
+    {'PV'     }    {'A: unseen levels' }    {'C3 strong + all Twin'                        }          0.0415                    NaN                   0.037        
+    {'PV'     }    {'A: unseen levels' }    {'C4 instantaneous sensor + instantaneous Twin'}          0.0808                    NaN                  0.0709        
+    {'PV'     }    {'B: unseen profile'}    {'S1 sensor instantaneous'                     }          0.1124                 0.0677                  0.0748        
+    {'PV'     }    {'B: unseen profile'}    {'S2 sensor + sensor windows'                  }          0.0743                 0.0749                  0.0721        
+    {'PV'     }    {'B: unseen profile'}    {'S3 sensor strong (S + ratios)'               }          0.1047                  0.081                  0.0572        
+    {'PV'     }    {'B: unseen profile'}    {'T1 Twin only: all Twin features'             }          0.0599                 0.0436                  0.0789        
+    {'PV'     }    {'B: unseen profile'}    {'T2 Twin only: raw residuals'                 }          0.0992                  0.079                  0.1376        
+    {'PV'     }    {'B: unseen profile'}    {'T3 Twin only: residual windows'              }          0.0538                 0.0545                  0.1264        
+    {'PV'     }    {'B: unseen profile'}    {'T4 Twin only: instantaneous'                 }          0.0944                 0.0576                  0.0758        
+    {'PV'     }    {'B: unseen profile'}    {'C1 strong + raw residuals'                   }          0.0761                 0.0434                  0.0326        
+    {'PV'     }    {'B: unseen profile'}    {'C2 strong + residual windows'                }          0.0654                   0.04                  0.0297        
+    {'PV'     }    {'B: unseen profile'}    {'C3 strong + all Twin'                        }          0.0649                 0.0399                  0.0297        
+    {'PV'     }    {'B: unseen profile'}    {'C4 instantaneous sensor + instantaneous Twin'}          0.0865                 0.0549                  0.0707        
+    {'Battery'}    {'A: unseen levels' }    {'S1 sensor instantaneous'                     }          0.2523                    NaN                  0.2549        
+    {'Battery'}    {'A: unseen levels' }    {'S2 sensor + sensor windows'                  }           0.241                    NaN                  0.2337        
+    {'Battery'}    {'A: unseen levels' }    {'S3 sensor strong (S + ratios)'               }          0.2469                    NaN                    0.23        
+    {'Battery'}    {'A: unseen levels' }    {'T1 Twin only: all Twin features'             }          0.1613                    NaN                  0.2331        
+    {'Battery'}    {'A: unseen levels' }    {'T2 Twin only: raw residuals'                 }          0.2476                    NaN                  0.2489        
+    {'Battery'}    {'A: unseen levels' }    {'T3 Twin only: residual windows'              }          0.1614                    NaN                  0.2353        
+    {'Battery'}    {'A: unseen levels' }    {'T4 Twin only: instantaneous'                 }          0.2474                    NaN                  0.2478        
+    {'Battery'}    {'A: unseen levels' }    {'C1 strong + raw residuals'                   }           0.164                    NaN                   0.205        
+    {'Battery'}    {'A: unseen levels' }    {'C2 strong + residual windows'                }          0.1419                    NaN                  0.1824        
+    {'Battery'}    {'A: unseen levels' }    {'C3 strong + all Twin'                        }          0.1415                    NaN                   0.179        
+    {'Battery'}    {'A: unseen levels' }    {'C4 instantaneous sensor + instantaneous Twin'}            0.25                    NaN                  0.2525        
+    {'Battery'}    {'B: unseen profile'}    {'S1 sensor instantaneous'                     }          0.3826                  0.021                  0.3794        
+    {'Battery'}    {'B: unseen profile'}    {'S2 sensor + sensor windows'                  }          0.3315                 0.0811                  0.3866        
+    {'Battery'}    {'B: unseen profile'}    {'S3 sensor strong (S + ratios)'               }          0.3154                 0.0875                  0.3889        
+    {'Battery'}    {'B: unseen profile'}    {'T1 Twin only: all Twin features'             }          0.2827                 0.1103                  0.2313        
+    {'Battery'}    {'B: unseen profile'}    {'T2 Twin only: raw residuals'                 }          0.3731                 0.0228                  0.3705        
+    {'Battery'}    {'B: unseen profile'}    {'T3 Twin only: residual windows'              }          0.2807                 0.1106                  0.2363        
+    {'Battery'}    {'B: unseen profile'}    {'T4 Twin only: instantaneous'                 }          0.3733                 0.0275                  0.3675        
+    {'Battery'}    {'B: unseen profile'}    {'C1 strong + raw residuals'                   }           0.188                 0.1112                  0.2638        
+    {'Battery'}    {'B: unseen profile'}    {'C2 strong + residual windows'                }          0.1083                 0.1557                  0.2009        
+    {'Battery'}    {'B: unseen profile'}    {'C3 strong + all Twin'                        }          0.1055                 0.1496                  0.1993        
+    {'Battery'}    {'B: unseen profile'}    {'C4 instantaneous sensor + instantaneous Twin'}          0.3801                 0.0351                  0.3727        
+
+
+=== REDUNDANCY: Twin features that are almost copies of a sensor feature (|r| > 0.95) ===
+       <strong>Asset</strong>              <strong>TwinFeature</strong>            <strong>MaxAbsCorrWithSensorFeature</strong>         <strong>MostSimilarSensorFeature</strong>     
+    <strong>___________</strong>    <strong>__________________________</strong>    <strong>___________________________</strong>    <strong>__________________________________</strong>
+
+    {'PV'     }    {'T_PV_Twin_Current'     }               0.988               {'S_PV_Irradiance_Final'         }
+    {'PV'     }    {'T_PV_Twin_Power'       }                0.99               {'S_PV_Irradiance_Final'         }
+    {'Battery'}    {'T_Battery_Twin_Voltage'}               0.976               {'S_Battery_Voltage_Final_mean20'}
+
+Twin features checked: 18, near-duplicates of a sensor feature: 3
+
+Saved: Stage10_Ablation_Results/ByWear/Lambdas.csv, Stage10_Redundancy.csv, Stage10_FeatureAudit.csv
+--- Stage10_ablation finished in 53.8 s ---
+
+=== Stage10_tinyml ===
+
+=== TinyML SUITABILITY ESTIMATES (desktop-side; float32; no MCU claimed) ===
+       <strong>Asset</strong>         <strong>Model</strong>                 <strong>Candidate</strong>                <strong>nFeatures</strong>    <strong>nParams</strong>     <strong>Flash_B</strong>      <strong>MACs</strong>    <strong>RAM_B_10Hz</strong>    <strong>RAM_B_1Hz</strong>    <strong>kFLOP_per_s</strong>
+    <strong>___________</strong>    <strong>_________</strong>    <strong>________________________________</strong>    <strong>_________</strong>    <strong>_______</strong>    <strong>__________</strong>    <strong>____</strong>    <strong>__________</strong>    <strong>_________</strong>    <strong>___________</strong>
+
+    {'PV'     }    {'ridge'}    {'S2 sensor + windows'         }       16            17             68     16        9664         1024           0.8    
+    {'PV'     }    {'ridge'}    {'S3 sensor strong'            }       19            20             80     19        9676         1036           0.8    
+    {'PV'     }    {'ridge'}    {'T1 Twin only'                }       12            13             52     12        4848          528           3.6    
+    {'PV'     }    {'ridge'}    {'C2 strong + residual windows'}       27            28            112     27       14508         1548           4.5    
+    {'PV'     }    {'ridge'}    {'C3 strong + all Twin'        }       31            32            128     31       14524         1564           4.5    
+    {'PV'     }    {'nn'   }    {'S3 sensor strong'            }       19           169            676    160        9708         1068           1.1    
+    {'PV'     }    {'nn'   }    {'T1 Twin only'                }       12           113            452    104        4880          560           3.8    
+    {'PV'     }    {'nn'   }    {'C2 strong + residual windows'}       27           233            932    224       14540         1580           4.8    
+    {'PV'     }    {'nn'   }    {'C3 strong + all Twin'        }       31           265           1060    256       14556         1596           4.9    
+    {'PV'     }    {'trees'}    {'S3 sensor strong'            }       19         11131     1.3357e+05    420        9676         1036           1.6    
+    {'PV'     }    {'trees'}    {'C3 strong + all Twin'        }       31          3193          38316    300       14524         1564             5    
+    {'Battery'}    {'ridge'}    {'S2 sensor + windows'         }       12            13             52     12        7248          768           0.6    
+    {'Battery'}    {'ridge'}    {'S3 sensor strong'            }       15            16             64     15        7260          780           0.6    
+    {'Battery'}    {'ridge'}    {'T1 Twin only'                }        6             7             28      6        2424          264           0.4    
+    {'Battery'}    {'ridge'}    {'C2 strong + residual windows'}       19            20             80     19        9676         1036             1    
+    {'Battery'}    {'ridge'}    {'C3 strong + all Twin'        }       21            22             88     21        9684         1044             1    
+    {'Battery'}    {'nn'   }    {'S3 sensor strong'            }       15           137            548    128        7292          812           0.9    
+    {'Battery'}    {'nn'   }    {'T1 Twin only'                }        6            65            260     56        2456          296           0.5    
+    {'Battery'}    {'nn'   }    {'C2 strong + residual windows'}       19           169            676    160        9708         1068           1.3    
+    {'Battery'}    {'nn'   }    {'C3 strong + all Twin'        }       21           185            740    176        9716         1076           1.3    
+    {'Battery'}    {'trees'}    {'S3 sensor strong'            }       15         17771     2.1325e+05    480        7260          780           1.6    
+    {'Battery'}    {'trees'}    {'C3 strong + all Twin'        }       21         19614     2.3537e+05    480        9684         1044           1.9    
+
+
+=== ACCURACY (fixed ridge lambda = 1; NN = mean of 3 seeds; trees are reference only) ===
+       <strong>Asset</strong>         <strong>Model</strong>                 <strong>Candidate</strong>                <strong>MAE_A</strong>     <strong>MAE_B</strong>     <strong>MeanMAE</strong>    <strong>NN_seed_SD</strong>         <strong>Group</strong>           <strong>Selected</strong>  
+    <strong>___________</strong>    <strong>_________</strong>    <strong>________________________________</strong>    <strong>______</strong>    <strong>______</strong>    <strong>_______</strong>    <strong>__________</strong>    <strong>_______________</strong>    <strong>____________</strong>
+
+    {'PV'     }    {'ridge'}    {'S2 sensor + windows'         }    0.0633    0.0731    0.0682          NaN      {'sensor-only'}    {0×0 char  }
+    {'PV'     }    {'ridge'}    {'S3 sensor strong'            }    0.0642    0.0771    0.0706          NaN      {'sensor-only'}    {0×0 char  }
+    {'PV'     }    {'ridge'}    {'T1 Twin only'                }    0.0571    0.0644    0.0608          NaN      {'Twin-using' }    {0×0 char  }
+    {'PV'     }    {'ridge'}    {'C2 strong + residual windows'}    0.0399    0.0448    0.0423          NaN      {'Twin-using' }    {0×0 char  }
+    {'PV'     }    {'ridge'}    {'C3 strong + all Twin'        }    0.0392    0.0444    0.0418          NaN      {'Twin-using' }    {0×0 char  }
+    {'PV'     }    {'nn'   }    {'S3 sensor strong'            }    0.0399    0.0333    0.0366       0.0094      {'sensor-only'}    {'SELECTED'}
+    {'PV'     }    {'nn'   }    {'T1 Twin only'                }    0.1067    0.0304    0.0686       0.0555      {'Twin-using' }    {0×0 char  }
+    {'PV'     }    {'nn'   }    {'C2 strong + residual windows'}    0.0377    0.0166    0.0272       0.0051      {'Twin-using' }    {'SELECTED'}
+    {'PV'     }    {'nn'   }    {'C3 strong + all Twin'        }    0.0341    0.0194    0.0267       0.0013      {'Twin-using' }    {0×0 char  }
+    {'PV'     }    {'trees'}    {'S3 sensor strong'            }    0.2025    0.1045    0.1535          NaN      {'sensor-only'}    {0×0 char  }
+    {'PV'     }    {'trees'}    {'C3 strong + all Twin'        }    0.1568     0.015    0.0859          NaN      {'Twin-using' }    {0×0 char  }
+    {'Battery'}    {'ridge'}    {'S2 sensor + windows'         }    0.2374    0.3035    0.2704          NaN      {'sensor-only'}    {'SELECTED'}
+    {'Battery'}    {'ridge'}    {'S3 sensor strong'            }    0.2384    0.2992    0.2688          NaN      {'sensor-only'}    {0×0 char  }
+    {'Battery'}    {'ridge'}    {'T1 Twin only'                }    0.1972    0.2277    0.2124          NaN      {'Twin-using' }    {0×0 char  }
+    {'Battery'}    {'ridge'}    {'C2 strong + residual windows'}    0.1621    0.1548    0.1585          NaN      {'Twin-using' }    {'SELECTED'}
+    {'Battery'}    {'ridge'}    {'C3 strong + all Twin'        }    0.1611    0.1518    0.1565          NaN      {'Twin-using' }    {0×0 char  }
+    {'Battery'}    {'nn'   }    {'S3 sensor strong'            }    0.2933     0.324    0.3087       0.0226      {'sensor-only'}    {0×0 char  }
+    {'Battery'}    {'nn'   }    {'T1 Twin only'                }    0.2059    0.1944    0.2001       0.0019      {'Twin-using' }    {0×0 char  }
+    {'Battery'}    {'nn'   }    {'C2 strong + residual windows'}    0.1786    0.2098    0.1942       0.0207      {'Twin-using' }    {0×0 char  }
+    {'Battery'}    {'nn'   }    {'C3 strong + all Twin'        }    0.1784    0.2164    0.1974       0.0195      {'Twin-using' }    {0×0 char  }
+    {'Battery'}    {'trees'}    {'S3 sensor strong'            }    0.2561    0.3177    0.2869          NaN      {'sensor-only'}    {0×0 char  }
+    {'Battery'}    {'trees'}    {'C3 strong + all Twin'        }    0.1771    0.1991    0.1881          NaN      {'Twin-using' }    {0×0 char  }
+
+
+=== IS THE TWIN WORTH ITS COST? (selected model of each group) ===
+PV: sensor-only  nn S3 sensor strong: error 0.0366, flash 676 B, RAM 9708 B (10 Hz) / 1068 B (1 Hz), 1.1 kFLOP/s
+PV: Twin-using   nn C2 strong + residual windows: error 0.0272, flash 932 B, RAM 14540 B (10 Hz) / 1580 B (1 Hz), 4.8 kFLOP/s
+PV: error reduced by 26% for 4.4x the flops per second
+
+Battery: sensor-only  ridge S2 sensor + windows: error 0.2704, flash 52 B, RAM 7248 B (10 Hz) / 768 B (1 Hz), 0.6 kFLOP/s
+Battery: Twin-using   ridge C2 strong + residual windows: error 0.1585, flash 80 B, RAM 9676 B (10 Hz) / 1036 B (1 Hz), 1.0 kFLOP/s
+Battery: error reduced by 41% for 1.7x the flops per second
+
+Saved Stage10_TinyML_Estimates.csv
+--- Stage10_tinyml finished in 29.1 s ---
+
+=== Stage10_final_table ===
+
+=== FULL METRICS (every row, both regimes) ===
+       <strong>Asset</strong>       <strong>Regime</strong>      <strong>RowKey</strong>         <strong>Model</strong>      <strong>FeatureSet</strong>     <strong>MAE</strong>       <strong>RMSE</strong>       <strong>R2</strong>      <strong>nRMSE</strong>      <strong>Bias</strong>      <strong>MaxAE</strong>     <strong>Spearman</strong>
+    <strong>___________</strong>    <strong>______</strong>    <strong>___________</strong>    <strong>_________</strong>    <strong>__________</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>_______</strong>    <strong>______</strong>    <strong>________</strong>
+
+    {'PV'     }    {'A'}     {'base'   }    {'const'}    {0×0 char}      0.25      0.25         0       0.5          0      0.25       NaN  
+    {'PV'     }    {'A'}     {'sensR'  }    {'ridge'}    {'S2'    }    0.0633    0.0779     0.903    0.1557    -0.0196    0.3284     0.866  
+    {'PV'     }    {'A'}     {'sensSel'}    {'nn'   }    {'S3'    }    0.0317    0.0483     0.963    0.0967     0.0012    0.3779     0.866  
+    {'PV'     }    {'A'}     {'twin'   }    {'ridge'}    {'T1'    }    0.0571    0.0743     0.912    0.1487    -0.0013      0.25     0.866  
+    {'PV'     }    {'A'}     {'c1'     }    {'ridge'}    {'C1'    }    0.0475     0.077     0.905     0.154    -0.0062     0.656     0.852  
+    {'PV'     }    {'A'}     {'c2'     }    {'ridge'}    {'C2'    }    0.0399    0.0667     0.929    0.1334    -0.0046    0.4855     0.863  
+    {'PV'     }    {'A'}     {'full'   }    {'nn'   }    {'C2'    }    0.0332    0.0422     0.971    0.0845    -0.0163    0.1805     0.866  
+    {'PV'     }    {'B'}     {'base'   }    {'const'}    {0×0 char}       0.3    0.3536         0    0.3536          0       0.5       NaN  
+    {'PV'     }    {'B'}     {'sensR'  }    {'ridge'}    {'S2'    }    0.0731    0.1066     0.909    0.1066    -0.0085    0.4124      0.95  
+    {'PV'     }    {'B'}     {'sensSel'}    {'nn'   }    {'S3'    }    0.0335    0.0658     0.965    0.0658     0.0091     0.381     0.968  
+    {'PV'     }    {'B'}     {'twin'   }    {'ridge'}    {'T1'    }    0.0644    0.0906     0.934    0.0906    -0.0074    0.3408     0.972  
+    {'PV'     }    {'B'}     {'c1'     }    {'ridge'}    {'C1'    }     0.051    0.0926     0.931    0.0926     0.0079    0.6323     0.956  
+    {'PV'     }    {'B'}     {'c2'     }    {'ridge'}    {'C2'    }    0.0448    0.0795     0.949    0.0795     0.0051    0.4648     0.963  
+    {'PV'     }    {'B'}     {'full'   }    {'nn'   }    {'C2'    }    0.0181    0.0312     0.992    0.0312     0.0071    0.1763     0.981  
+    {'Battery'}    {'A'}     {'base'   }    {'const'}    {0×0 char}      0.25      0.25         0       0.5          0      0.25       NaN  
+    {'Battery'}    {'A'}     {'sensR'  }    {'ridge'}    {'S2'    }    0.2374     0.266    -0.132    0.5321     0.0039    0.6223     0.133  
+    {'Battery'}    {'A'}     {'sensSel'}    {'ridge'}    {'S2'    }    0.2374     0.266    -0.132    0.5321     0.0039    0.6223     0.133  
+    {'Battery'}    {'A'}     {'twin'   }    {'ridge'}    {'T1'    }    0.1972    0.2407     0.073    0.4813     -0.011      0.75     0.394  
+    {'Battery'}    {'A'}     {'c1'     }    {'ridge'}    {'C1'    }    0.1847    0.2291      0.16    0.4582    -0.0157      0.75      0.47  
+    {'Battery'}    {'A'}     {'c2'     }    {'ridge'}    {'C2'    }    0.1621    0.1982     0.372    0.3963    -0.0185    0.5238     0.647  
+    {'Battery'}    {'A'}     {'full'   }    {'ridge'}    {'C2'    }    0.1621    0.1982     0.372    0.3963    -0.0185    0.5238     0.647  
+    {'Battery'}    {'B'}     {'base'   }    {'const'}    {0×0 char}       0.3    0.3536         0    0.3536          0       0.5       NaN  
+    {'Battery'}    {'B'}     {'sensR'  }    {'ridge'}    {'S2'    }    0.3035    0.3564    -0.016    0.3564    -0.0286    0.8779     0.119  
+    {'Battery'}    {'B'}     {'sensSel'}    {'ridge'}    {'S2'    }    0.3035    0.3564    -0.016    0.3564    -0.0286    0.8779     0.119  
+    {'Battery'}    {'B'}     {'twin'   }    {'ridge'}    {'T1'    }    0.2277    0.2815     0.366    0.2815     0.0341         1     0.603  
+    {'Battery'}    {'B'}     {'c1'     }    {'ridge'}    {'C1'    }    0.2069    0.2528     0.489    0.2528    -0.0398    0.7783     0.733  
+    {'Battery'}    {'B'}     {'c2'     }    {'ridge'}    {'C2'    }    0.1548    0.2165     0.625    0.2165    -0.0606    0.8226     0.818  
+    {'Battery'}    {'B'}     {'full'   }    {'ridge'}    {'C2'    }    0.1548    0.2165     0.625    0.2165    -0.0606    0.8226     0.818  
+
+
+=== ABLATION TABLE (spec section 24), Regime A: unseen health levels ===
+                 <strong>Model_Input</strong>                  <strong>PV_MAE</strong>    <strong>PV_RMSE</strong>    <strong>PV_R2</strong>    <strong>Batt_MAE</strong>    <strong>Batt_RMSE</strong>    <strong>Batt_R2</strong>    <strong>PV_Features</strong>    <strong>Batt_Features</strong>    <strong>PV_Size_B</strong>    <strong>Batt_Size_B</strong>
+    <strong>______________________________________</strong>    <strong>______</strong>    <strong>_______</strong>    <strong>_____</strong>    <strong>________</strong>    <strong>_________</strong>    <strong>_______</strong>    <strong>___________</strong>    <strong>_____________</strong>    <strong>_________</strong>    <strong>___________</strong>
+
+    {'Baseline predictor (training mean)'}      0.25      0.25         0       0.25        0.25           0          0               0               4            4     
+    {'Sensor-only, ridge'                }    0.0633    0.0779     0.903     0.2374       0.266      -0.132         16              12              68           52     
+    {'Sensor-only, selected'             }    0.0317    0.0483     0.963     0.2374       0.266      -0.132         19              12             676           52     
+    {'Twin-only, ridge'                  }    0.0571    0.0743     0.912     0.1972      0.2407       0.073         12               6              52           28     
+    {'Sensor + raw residual, ridge'      }    0.0475     0.077     0.905     0.1847      0.2291        0.16         21              16              88           68     
+    {'Sensor + temporal residual, ridge' }    0.0399    0.0667     0.929     0.1621      0.1982       0.372         27              19             112           80     
+    {'Full selected Sensor + Twin'       }    0.0332    0.0422     0.971     0.1621      0.1982       0.372         27              19             932           80     
+
+
+=== ABLATION TABLE (spec section 24), Regime B: unseen operating profile ===
+                 <strong>Model_Input</strong>                  <strong>PV_MAE</strong>    <strong>PV_RMSE</strong>    <strong>PV_R2</strong>    <strong>Batt_MAE</strong>    <strong>Batt_RMSE</strong>    <strong>Batt_R2</strong>    <strong>PV_Features</strong>    <strong>Batt_Features</strong>    <strong>PV_Size_B</strong>    <strong>Batt_Size_B</strong>
+    <strong>______________________________________</strong>    <strong>______</strong>    <strong>_______</strong>    <strong>_____</strong>    <strong>________</strong>    <strong>_________</strong>    <strong>_______</strong>    <strong>___________</strong>    <strong>_____________</strong>    <strong>_________</strong>    <strong>___________</strong>
+
+    {'Baseline predictor (training mean)'}       0.3    0.3536         0        0.3      0.3536           0          0               0               4            4     
+    {'Sensor-only, ridge'                }    0.0731    0.1066     0.909     0.3035      0.3564      -0.016         16              12              68           52     
+    {'Sensor-only, selected'             }    0.0335    0.0658     0.965     0.3035      0.3564      -0.016         19              12             676           52     
+    {'Twin-only, ridge'                  }    0.0644    0.0906     0.934     0.2277      0.2815       0.366         12               6              52           28     
+    {'Sensor + raw residual, ridge'      }     0.051    0.0926     0.931     0.2069      0.2528       0.489         21              16              88           68     
+    {'Sensor + temporal residual, ridge' }    0.0448    0.0795     0.949     0.1548      0.2165       0.625         27              19             112           80     
+    {'Full selected Sensor + Twin'       }    0.0181    0.0312     0.992     0.1548      0.2165       0.625         27              19             932           80     
+
+
+Notes: size = float32 parameters in bytes. "Selected" rows use the neural network for PV (single seed 1) and ridge for the battery.
+The baseline predictor has no features and no meaningful Spearman correlation (NaN).
+Saved Stage10_Final_Metrics.csv, Stage10_Ablation_Table_A/B.csv, Stage10_Predictions.mat
+--- Stage10_final_table finished in 3.3 s ---
+
+=== Stage13_eval_faults ===
+
+=== D1: overall error, clean vs faulted (trees in Regime A cannot interpolate, ignore those rows) ===
+       <strong>Asset</strong>              <strong>Regime</strong>              <strong>Model</strong>      <strong>MAE_sensor_clean</strong>    <strong>MAE_sensor_fault</strong>    <strong>MAE_twin_clean</strong>    <strong>MAE_twin_fault</strong>    <strong>Sensor_damage</strong>    <strong>Twin_damage</strong>    <strong>Twin_better_when_faulted</strong>
+    <strong>___________</strong>    <strong>_____________________</strong>    <strong>_________</strong>    <strong>________________</strong>    <strong>________________</strong>    <strong>______________</strong>    <strong>______________</strong>    <strong>_____________</strong>    <strong>___________</strong>    <strong>________________________</strong>
+
+    {'PV'     }    {'A: unseen levels' }    {'ridge'}         0.0642              0.1765             0.0392            0.1677           0.1124          0.1285               {'yes'}         
+    {'PV'     }    {'A: unseen levels' }    {'trees'}         0.2011               0.228             0.1649            0.1999            0.027           0.035               {'yes'}         
+    {'PV'     }    {'B: unseen profile'}    {'ridge'}         0.0771               0.132             0.0444            0.0961           0.0549          0.0517               {'yes'}         
+    {'PV'     }    {'B: unseen profile'}    {'trees'}          0.105              0.1465             0.0145            0.0847           0.0415          0.0703               {'yes'}         
+    {'Battery'}    {'A: unseen levels' }    {'ridge'}         0.2384              0.3617             0.1611            0.4045           0.1232          0.2434               {'no' }         
+    {'Battery'}    {'A: unseen levels' }    {'trees'}         0.2518              0.2948             0.1796            0.3018            0.043          0.1223               {'no' }         
+    {'Battery'}    {'B: unseen profile'}    {'ridge'}         0.2992              0.3943             0.1518            0.3362           0.0951          0.1843               {'yes'}         
+    {'Battery'}    {'B: unseen profile'}    {'trees'}         0.3114              0.3273             0.1988            0.2694           0.0159          0.0706               {'yes'}         
+
+
+=== D2: ridge, broken down by fault type and sensor channel (test runs only) ===
+       <strong>Asset</strong>              <strong>Regime</strong>               <strong>GroupBy</strong>          <strong>Group</strong>      <strong>nRuns</strong>    <strong>MAE_sensor_clean</strong>    <strong>MAE_sensor_fault</strong>    <strong>MAE_twin_clean</strong>    <strong>MAE_twin_fault</strong>    <strong>Better_when_faulted</strong>
+    <strong>___________</strong>    <strong>_____________________</strong>    <strong>______________</strong>    <strong>_________</strong>    <strong>_____</strong>    <strong>________________</strong>    <strong>________________</strong>    <strong>______________</strong>    <strong>______________</strong>    <strong>___________________</strong>
+
+    {'PV'     }    {'A: unseen levels' }    {'ALL'       }    {'all'  }     40           0.064               0.177              0.039             0.168             {'Twin'  }     
+    {'PV'     }    {'A: unseen levels' }    {'fault type'}    {'bias' }     12           0.076               0.275              0.042             0.201             {'Twin'  }     
+    {'PV'     }    {'A: unseen levels' }    {'fault type'}    {'stuck'}      9           0.086               0.218              0.059             0.232             {'Sensor'}     
+    {'PV'     }    {'A: unseen levels' }    {'fault type'}    {'noise'}     10           0.054                0.07              0.025             0.116             {'Sensor'}     
+    {'PV'     }    {'A: unseen levels' }    {'fault type'}    {'drift'}      9           0.039               0.123              0.031             0.117             {'Twin'  }     
+    {'PV'     }    {'A: unseen levels' }    {'channel'   }    {'G'    }      8           0.064               0.233               0.03             0.219             {'Twin'  }     
+    {'PV'     }    {'A: unseen levels' }    {'channel'   }    {'I'    }     11           0.085               0.294              0.058             0.289             {'Twin'  }     
+    {'PV'     }    {'A: unseen levels' }    {'channel'   }    {'Tc'   }     12           0.048               0.072              0.029             0.079             {'Sensor'}     
+    {'PV'     }    {'A: unseen levels' }    {'channel'   }    {'V'    }      9            0.06               0.122              0.039             0.092             {'Twin'  }     
+    {'PV'     }    {'B: unseen profile'}    {'ALL'       }    {'all'  }     25           0.077               0.132              0.044             0.096             {'Twin'  }     
+    {'PV'     }    {'B: unseen profile'}    {'fault type'}    {'bias' }      4           0.071               0.075              0.035              0.06             {'Twin'  }     
+    {'PV'     }    {'B: unseen profile'}    {'fault type'}    {'stuck'}      6           0.137               0.228              0.094             0.215             {'Twin'  }     
+    {'PV'     }    {'B: unseen profile'}    {'fault type'}    {'noise'}      9           0.056               0.073              0.026             0.049             {'Twin'  }     
+    {'PV'     }    {'B: unseen profile'}    {'fault type'}    {'drift'}      6           0.053               0.163              0.028             0.072             {'Twin'  }     
+    {'PV'     }    {'B: unseen profile'}    {'channel'   }    {'G'    }      5           0.052               0.094              0.027             0.078             {'Twin'  }     
+    {'PV'     }    {'B: unseen profile'}    {'channel'   }    {'I'    }      6           0.111               0.237               0.07              0.17             {'Twin'  }     
+    {'PV'     }    {'B: unseen profile'}    {'channel'   }    {'Tc'   }      6           0.076               0.108              0.035              0.09             {'Twin'  }     
+    {'PV'     }    {'B: unseen profile'}    {'channel'   }    {'V'    }      8           0.068               0.095              0.043             0.057             {'Twin'  }     
+    {'Battery'}    {'A: unseen levels' }    {'ALL'       }    {'all'  }     40           0.238               0.362              0.161             0.404             {'Sensor'}     
+    {'Battery'}    {'A: unseen levels' }    {'fault type'}    {'bias' }      8           0.196               0.196              0.162             0.496             {'Sensor'}     
+    {'Battery'}    {'A: unseen levels' }    {'fault type'}    {'stuck'}     13           0.238               0.299              0.171             0.292             {'Twin'  }     
+    {'Battery'}    {'A: unseen levels' }    {'fault type'}    {'noise'}      6           0.251               0.413              0.149             0.365             {'Twin'  }     
+    {'Battery'}    {'A: unseen levels' }    {'fault type'}    {'drift'}     13           0.259               0.502              0.156             0.479             {'Twin'  }     
+    {'Battery'}    {'A: unseen levels' }    {'channel'   }    {'I'    }     13           0.245                0.26              0.124             0.298             {'Sensor'}     
+    {'Battery'}    {'A: unseen levels' }    {'channel'   }    {'T'    }     14           0.239                0.39              0.172             0.397             {'Sensor'}     
+    {'Battery'}    {'A: unseen levels' }    {'channel'   }    {'V'    }     13           0.232               0.434              0.186             0.519             {'Sensor'}     
+    {'Battery'}    {'B: unseen profile'}    {'ALL'       }    {'all'  }     25           0.299               0.394              0.152             0.336             {'Twin'  }     
+    {'Battery'}    {'B: unseen profile'}    {'fault type'}    {'bias' }      8            0.31               0.307              0.117             0.385             {'Sensor'}     
+    {'Battery'}    {'B: unseen profile'}    {'fault type'}    {'stuck'}      6           0.271               0.476              0.181             0.266             {'Twin'  }     
+    {'Battery'}    {'B: unseen profile'}    {'fault type'}    {'noise'}      5           0.328               0.411              0.166              0.35             {'Twin'  }     
+    {'Battery'}    {'B: unseen profile'}    {'fault type'}    {'drift'}      6            0.29               0.415              0.157             0.329             {'Twin'  }     
+    {'Battery'}    {'B: unseen profile'}    {'channel'   }    {'I'    }      4           0.273               0.346              0.142             0.308             {'Twin'  }     
+    {'Battery'}    {'B: unseen profile'}    {'channel'   }    {'T'    }     11           0.307               0.359              0.139             0.233             {'Twin'  }     
+    {'Battery'}    {'B: unseen profile'}    {'channel'   }    {'V'    }     10           0.301               0.453               0.17             0.461             {'Sensor'}     
+
+
+=== D3: does the Twin residual flag the fault? (flag = per-run mean |residual| above the largest clean run) ===
+       <strong>Asset</strong>          <strong>GroupBy</strong>          <strong>Group</strong>      <strong>nRuns</strong>    <strong>Pct_faults_flagged</strong>    <strong>Median_residual_ratio</strong>
+    <strong>___________</strong>    <strong>______________</strong>    <strong>_________</strong>    <strong>_____</strong>    <strong>__________________</strong>    <strong>_____________________</strong>
+
+    {'PV'     }    {'ALL'       }    {'all'  }     100              5                    1.08         
+    {'PV'     }    {'fault type'}    {'bias' }      25              0                    0.93         
+    {'PV'     }    {'fault type'}    {'stuck'}      25             16                    1.26         
+    {'PV'     }    {'fault type'}    {'noise'}      25              0                    1.05         
+    {'PV'     }    {'fault type'}    {'drift'}      25              4                    0.92         
+    {'PV'     }    {'channel'   }    {'G'    }      28              7                     1.6         
+    {'PV'     }    {'channel'   }    {'I'    }      24             13                     1.6         
+    {'PV'     }    {'channel'   }    {'Tc'   }      24              0                    0.95         
+    {'PV'     }    {'channel'   }    {'V'    }      24              0                    0.92         
+    {'Battery'}    {'ALL'       }    {'all'  }     100             42                    1.07         
+    {'Battery'}    {'fault type'}    {'bias' }      25             40                    1.07         
+    {'Battery'}    {'fault type'}    {'stuck'}      25             52                     1.6         
+    {'Battery'}    {'fault type'}    {'noise'}      25             40                    1.05         
+    {'Battery'}    {'fault type'}    {'drift'}      25             36                    1.07         
+    {'Battery'}    {'channel'   }    {'I'    }      32             19                    1.07         
+    {'Battery'}    {'channel'   }    {'T'    }      32              0                       1         
+    {'Battery'}    {'channel'   }    {'V'    }      36            100                    5.36         
+
+--- Stage13_eval_faults finished in 14.6 s ---
+
+=== Stage10_plots ===
+Ten figures saved in Stage10_figures
+--- Stage10_plots finished in 33.7 s ---
+
+=== Reproducibility comparison against Stage10_repro_snapshot ===
+  Stage10_Final_Metrics.csv           MATCH      max |difference| = 0  
+  Stage10_Ablation_Table_A.csv        MATCH      max |difference| = 0  
+  Stage10_Ablation_Table_B.csv        MATCH      max |difference| = 0  
+  Stage10_Ablation_Results.csv        MATCH      max |difference| = 0  
+  Stage10_Ablation_ByWear.csv         MATCH      max |difference| = 0  
+  Stage10_Redundancy.csv              MATCH      max |difference| = 0  
+  Stage10_FeatureAudit.csv            MATCH      max |difference| = 0  
+  Stage10_TinyML_Estimates.csv        MATCH      max |difference| = 0  
+  Stage13_Eval_D1.csv                 MATCH      max |difference| = 0  
+
+=== Normalisation audit: lines that compute mean/std/zscore/normalize or set Standardize ===
+Check each line: it must be computed from TRAINING rows only.
+  Stage10_ablation.m:41:  okS = std(Xs) > 1e-12;  okT = std(Xt) > 1e-12;
+  Stage10_ablation.m:76:  mn = fitrnet(X(tr,:), F.D(tr), 'LayerSizes', 8, 'Standardize', true, ...
+  Stage10_ablation.m:84:  r2  = 1 - sum((y - p).^2) / sum((y - mean(y)).^2);
+  Stage10_ablation.m:168:  mu = mean(X);  sd = std(X) + 1e-12;  Z = (X - mu) ./ sd;
+  Stage10_ablation.m:169:  beta = (Z'*Z + lam*eye(size(Z,2))) \ (Z' * (y - mean(y)));
+  Stage10_ablation.m:170:  mdl = struct('mu',mu,'sd',sd,'beta',beta,'ybar',mean(y));
+  Stage10_cv_compare.m:30:  r2   = 1 - sum((yhat(held)-y(held)).^2) / sum((y(held)-mean(y(held))).^2);
+  Stage10_cv_compare.m:32:  sprintf('%.3f +- %.3f', mean(fm(s,:)), std(fm(s,:)))}; %#ok<AGROW>
+  Stage10_cv_compare.m:66:  mu = mean(Xtr);  sd = std(Xtr) + 1e-12;
+  Stage10_cv_compare.m:68:  beta = (Z'*Z + 1*eye(size(Z,2))) \ (Z' * (ytr - mean(ytr)));
+  Stage10_cv_compare.m:69:  yhat = mean(ytr) + ((Xte - mu) ./ sd) * beta;
+  Stage10_final_table.m:34:  p = mean(F.D(tr)) * ones(size(y));   nF = 0;   flash = 4;
+  Stage10_final_table.m:41:  mn = fitrnet(X(tr,:), F.D(tr), 'LayerSizes', 8, 'Standardize', true, ...
+  Stage10_final_table.m:85:  m.R2    = 1 - sum(e.^2) / sum((y - mean(y)).^2);
+  Stage10_final_table.m:87:  m.Bias  = mean(e);
+  Stage10_final_table.m:89:  if std(p) < 1e-12, m.Spearman = NaN; else, m.Spearman = corr(y, p, 'Type', 'Spearman'); end
+  Stage10_final_table.m:108:  mu = mean(X);  sd = std(X) + 1e-12;  Z = (X - mu) ./ sd;
+  Stage10_final_table.m:109:  beta = (Z'*Z + lam*eye(size(Z,2))) \ (Z' * (y - mean(y)));
+  Stage10_final_table.m:110:  mdl = struct('mu',mu,'sd',sd,'beta',beta,'ybar',mean(y));
+  Stage10_master.m:77:  fprintf('\n=== Normalisation audit: lines that compute mean/std/zscore/normalize or set Standardize ===\n');
+  Stage10_master.m:85:  hit = ~isempty(regexp(s, '(zscore|normalize\s*\(|Standardize)', 'once')) || ...
+  Stage10_ml_compare.m:26:  r2   = 1 - sum(err.^2) / sum((y(te) - mean(y(te))).^2);
+  Stage10_ml_compare.m:46:  mu = mean(Xtr);  sd = std(Xtr) + 1e-12;
+  Stage10_ml_compare.m:48:  beta = (Z'*Z + 1*eye(size(Z,2))) \ (Z' * (ytr - mean(ytr)));
+  Stage10_ml_compare.m:49:  yhat = mean(ytr) + ((Xte - mu) ./ sd) * beta;
+  Stage10_run_one.m:64:  fprintf('D_index   mean = %.4f (asked %.4f)\n', mean(T.D_index), Dpv);
+  Stage10_run_one.m:65:  fprintf('D_batt    mean = %.4f (asked %.4f)\n', mean(T.D_batt),  Db);
+  Stage10_run_one.m:69:  fprintf('PV window valid after t=25 s: %.2f of samples\n', mean(T.PV_Feature_Window_Valid(T.t >= 25)));
+  Stage10_run_one.m:71:  fprintf('PV G mean, measured vs profile: %.1f vs %.1f W/m^2\n', mean(T.PV_Irradiance_Final), mean(interp1(pv.t, pv.G, tg)));
+  Stage10_step3_health_levels.m:33:  m = @(sig) mean(sig.Data(sig.Time >= 5));          % steady value after the first 5 s
+  Stage10_tinyml.m:51:  mn = fitrnet(X(tr,:), F.D(tr), 'LayerSizes', 8, 'Standardize', true, ...
+  Stage10_tinyml.m:58:  mae(r) = mean(e, 'omitnan');
+  Stage10_tinyml.m:59:  if r == 1, sd = std(e, 'omitnan'); end
+  Stage10_tinyml.m:77:  nP = mean(nodes, 'omitnan');  flash = 12*nP;                 % about 12 bytes per node (feature, threshold, children)
+  Stage10_tinyml.m:86:  round(kflop,1), round(mae(1),4), round(mae(2),4), round(mean(mae),4), round(sd,4), grp, ''}; %#ok<AGROW>
+  Stage10_tinyml.m:138:  mu = mean(X);  sd = std(X) + 1e-12;  Z = (X - mu) ./ sd;
+  Stage10_tinyml.m:139:  beta = (Z'*Z + lam*eye(size(Z,2))) \ (Z' * (y - mean(y)));
+  Stage10_tinyml.m:140:  mdl = struct('mu',mu,'sd',sd,'beta',beta,'ybar',mean(y));
+  Stage10_validate_A.m:4:  cc = @(a,b) sum((a-mean(a)).*(b-mean(b))) / sqrt(sum((a-mean(a)).^2)*sum((b-mean(b)).^2));
+  Stage10_validate_A.m:51:  fprintf('8  PV current noise std %.4f A, battery voltage noise std %.4f V\n', std(eP(:)), std(eB(:)));
+
+=== RESULT: every compared result file reproduced within tolerance ===
+Elapsed 4.2 minutes. Log saved in Stage10_Reproducibility_Log.txt

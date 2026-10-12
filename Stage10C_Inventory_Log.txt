@@ -1,0 +1,83 @@
+Inventory 12-Oct-2026 21:05:48 | MATLAB 2025b | /home/inspiredkhalid/workspace/Matlab_workspace/Reformable_AI
+  Curve Fitting Toolbox                         25.2
+  Global Optimization Toolbox                   25.2
+  MATLAB                                        25.2
+  MATLAB Coder                                  25.2
+  MATLAB Compiler                               25.2
+  MATLAB Compiler SDK                           25.2
+  MATLAB Report Generator                       25.2
+  MATLAB Test                                   25.2
+  Mixed-Signal Blockset                         25.2
+  Optimization Toolbox                          25.2
+  Signal Integrity Toolbox                      25.2
+  Signal Processing Toolbox                     25.2
+  Simscape                                      25.2
+  Simscape Battery                              25.2
+  Simscape Driveline                            25.2
+  Simscape Electrical                           25.2
+  Simscape Fluids                               25.2
+  Simscape Multibody                            25.2
+  Simulink                                      25.2
+  Simulink 3D Animation                         25.2
+  Simulink Check                                25.2
+  Simulink Code Inspector                       25.2
+  Simulink Coder                                25.2
+  Simulink Compiler                             25.2
+  Simulink Control Design                       25.2
+  Simulink Coverage                             25.2
+  Simulink Design Optimization                  25.2
+  Simulink Design Verifier                      25.2
+  Simulink Desktop Real-Time                    25.2
+  Simulink Fault Analyzer                       25.2
+  Simulink PLC Coder                            25.2
+  Simulink Real-Time                            25.2
+  Simulink Report Generator                     25.2
+  Simulink Test                                 25.2
+  Statistics and Machine Learning Toolbox       25.2
+
+Files found: 748 (600 inside *_runs folders, summarised below)
+Saved Stage10C_Inventory.csv (148 files hashed or listed)
+
+=== Simulation run folders ===
+  Stage10_runs                                                  100 files      78.4 MB   2026-10-08 01:26 to 2026-10-08 02:09
+  Stage11_D_runs                                                100 files      78.8 MB   2026-10-09 03:44 to 2026-10-09 04:01
+  Stage11_E1_runs                                               100 files      78.3 MB   2026-10-08 22:28 to 2026-10-08 23:02
+  Stage11_E1a_runs                                              100 files      78.4 MB   2026-10-09 00:38 to 2026-10-09 01:01
+  Stage11_E1b_runs                                              100 files      78.4 MB   2026-10-09 01:05 to 2026-10-09 01:32
+  Stage11_E3_runs                                               100 files      78.4 MB   2026-10-09 00:16 to 2026-10-09 00:36
+
+=== First comment lines of the Stage scripts ===
+  Stage10C_inventory.m               function Stage10C_inventory() | % Stage 10 closure, step 0: inventory of the authoritative project files.
+  Stage10_ablation.m                 function Stage10_ablation() | % Stage 10 ablations on the existing causal feature files (Stage10_Features_PV/Battery.csv
+  Stage10_assemble_dataset.m         function Stage10_assemble_dataset() | M = readtable('Stage10_DatasetA_Manifest.csv');
+  Stage10_build_features.m           function Stage10_build_features() | PV = readtable('Stage10_PV_Controlled.csv');
+  Stage10_cv_compare.m               function Stage10_cv_compare() | rng(1);
+  Stage10_final_table.m              function Stage10_final_table() | % Full metric set and the Stage 10 ablation table (spec section 24). Also saves test-set p
+  Stage10_master.m                   function Stage10_master(rerunSimulations) | % Stage 10 master workflow and reproducibility check (spec Test 16),
+  Stage10_ml_compare.m               function Stage10_ml_compare() | rng(1);
+  Stage10_plots.m                    function Stage10_plots() | % The ten required Stage 10 figures. Needs Stage10_final_table first, plus the Stage 10-13
+  Stage10_profile.m                  function p = Stage10_profile(asset, id, seed) | % Operating profile for one run.  asset: 'pv' or 'batt';  id: 1..4;  seed: any integer.
+  Stage10_run_campaign.m             function Stage10_run_campaign(firstRun, lastRun) | % Runs the Dataset A manifest. Each run is saved to Stage10_runs/run_###.csv.
+  Stage10_run_one.m                  function T = Stage10_run_one(Dpv, Db, seed, pvID, bID, pvSeed, bSeed) | % One complete run of Dataset A.
+  Stage10_step3_health_levels.m      function T = Stage10_step3_health_levels() | % Stage10_step3_health_levels  STEP 3 ONLY: hold health at D = 0, .25, .5, .75, 1
+  Stage10_tinyml.m                   function Stage10_tinyml() | % Desktop-side TinyML suitability estimates (no MCU is claimed). Candidate models are scor
+  Stage10_validate_A.m               function Stage10_validate_A() | PV = readtable('Stage10_PV_Controlled.csv');
+  Stage11_build_features.m           function Stage11_build_features(tag) | M = readtable('Stage10_DatasetA_Manifest.csv');
+  Stage11_eval_mismatch.m            function Stage11_eval_mismatch(tag) | rng(1);
+  Stage11_eval_mismatch_aware.m      function Stage11_eval_mismatch_aware(tag) | % Train AND test on the mismatched Twin (train runs -> test runs), instead of training on
+  Stage11_mismatch.m                 function mm = Stage11_mismatch(level, socPts, seed) | % level  : parameter mismatch size, e.g. 0.05 means each Twin parameter is multiplied by 1
+  Stage11_run_campaign.m             function Stage11_run_campaign(tag, firstRun, lastRun) | % tag: 'E1' (+-5% params), 'E2' (+-10% params), 'E3' (+-3 pts starting SOC)
+  Stage11_run_one.m                  function T = Stage11_run_one(Dpv, Db, seed, pvID, bID, pvSeed, bSeed, | % Same as Stage10_run_one, plus a Twin mismatch struct mm (from Stage11_mismatch).
+  Stage11a_test_mismatch_hooks.m     function Stage11a_test_mismatch_hooks() | model = 'Reformable_AI_2025';
+  Stage11b_test.m                    function Stage11b_test() | M = readtable('Stage10_DatasetA_Manifest.csv');
+  Stage12_per_profile.m              function Stage12_per_profile() | rng(1);
+  Stage13_catalogue.m                function K = Stage13_catalogue(asset) | % One element per (sensor channel x fault type). asset = 'pv' or 'batt'.
+  Stage13_eval_faults.m              function Stage13_eval_faults() | rng(1);
+  Stage13_fault_plan.m               function P = Stage13_fault_plan() | % Balanced, shuffled, reproducible assignment of one PV fault and one battery fault to eac
+  Stage13_run_campaign.m             function Stage13_run_campaign(firstRun, lastRun) | if nargin < 1, firstRun = 1;   end
+  Stage13_run_one.m                  function T = Stage13_run_one(Dpv, Db, seed, pvID, bID, pvSeed, bSeed, | % fl : one row of the fault plan (Stage13_fault_plan). Twin parameters are exact (no misma
+  Stage13a_test_fault_hooks.m        function Stage13a_test_fault_hooks() | model = 'Reformable_AI_2025';
+  Stage13b_test.m                    function Stage13b_test() | M = readtable('Stage10_DatasetA_Manifest.csv');
+
+Saved Stage10C_Schema.txt
+Done. Please send back: Stage10C_Inventory.csv, Stage10C_Schema.txt, Stage10C_Inventory_Log.txt

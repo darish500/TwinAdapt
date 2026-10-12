@@ -1,0 +1,133 @@
+Asset,Regime,FeatureSet,Model,MAE_early_D_lt_0p4,MAE_mid_D_0p4_to_0p6,MAE_advanced_D_gt_0p6
+PV,A: unseen levels,S1 sensor instantaneous,ridge,0.0926,NaN,0.0872
+PV,A: unseen levels,S1 sensor instantaneous,trees,0.1765,NaN,0.1298
+PV,A: unseen levels,S1 sensor instantaneous,nn,0.0685,NaN,0.0789
+PV,A: unseen levels,S2 sensor + sensor windows,ridge,0.0618,NaN,0.0646
+PV,A: unseen levels,S2 sensor + sensor windows,trees,0.1852,NaN,0.1794
+PV,A: unseen levels,S2 sensor + sensor windows,nn,0.0447,NaN,0.0393
+PV,A: unseen levels,S3 sensor strong (S + ratios),ridge,0.0835,NaN,0.0713
+PV,A: unseen levels,S3 sensor strong (S + ratios),trees,0.2172,NaN,0.1978
+PV,A: unseen levels,S3 sensor strong (S + ratios),nn,0.0427,NaN,0.025
+PV,A: unseen levels,T1 Twin only: all Twin features,ridge,0.0501,NaN,0.0633
+PV,A: unseen levels,T1 Twin only: all Twin features,trees,0.2146,NaN,0.2082
+PV,A: unseen levels,T1 Twin only: all Twin features,nn,0.0397,NaN,0.044
+PV,A: unseen levels,T2 Twin only: raw residuals,ridge,0.0698,NaN,0.1464
+PV,A: unseen levels,T2 Twin only: raw residuals,trees,0.2135,NaN,0.2023
+PV,A: unseen levels,T2 Twin only: raw residuals,nn,0.1816,NaN,0.1968
+PV,A: unseen levels,T3 Twin only: residual windows,ridge,0.0336,NaN,0.1094
+PV,A: unseen levels,T3 Twin only: residual windows,trees,0.2181,NaN,0.2223
+PV,A: unseen levels,T3 Twin only: residual windows,nn,0.1596,NaN,0.1991
+PV,A: unseen levels,T4 Twin only: instantaneous,ridge,0.0832,NaN,0.076
+PV,A: unseen levels,T4 Twin only: instantaneous,trees,0.1987,NaN,0.1839
+PV,A: unseen levels,T4 Twin only: instantaneous,nn,0.1785,NaN,0.0768
+PV,A: unseen levels,C1 strong + raw residuals,ridge,0.0533,NaN,0.0418
+PV,A: unseen levels,C1 strong + raw residuals,trees,0.1566,NaN,0.1266
+PV,A: unseen levels,C1 strong + raw residuals,nn,0.0342,NaN,0.0227
+PV,A: unseen levels,C2 strong + residual windows,ridge,0.0418,NaN,0.038
+PV,A: unseen levels,C2 strong + residual windows,trees,0.2114,NaN,0.0869
+PV,A: unseen levels,C2 strong + residual windows,nn,0.0377,NaN,0.0215
+PV,A: unseen levels,C3 strong + all Twin,ridge,0.0415,NaN,0.037
+PV,A: unseen levels,C3 strong + all Twin,trees,0.2166,NaN,0.0993
+PV,A: unseen levels,C3 strong + all Twin,nn,0.0394,NaN,0.0414
+PV,A: unseen levels,C4 instantaneous sensor + instantaneous Twin,ridge,0.0808,NaN,0.0709
+PV,A: unseen levels,C4 instantaneous sensor + instantaneous Twin,trees,0.1921,NaN,0.1494
+PV,A: unseen levels,C4 instantaneous sensor + instantaneous Twin,nn,0.2241,NaN,0.1007
+PV,B: unseen profile,S1 sensor instantaneous,ridge,0.1124,0.0677,0.0748
+PV,B: unseen profile,S1 sensor instantaneous,trees,0.2378,0.0957,0.1787
+PV,B: unseen profile,S1 sensor instantaneous,nn,0.0748,0.0585,0.0506
+PV,B: unseen profile,S2 sensor + sensor windows,ridge,0.0743,0.0749,0.0721
+PV,B: unseen profile,S2 sensor + sensor windows,trees,0.2513,0.1061,0.2256
+PV,B: unseen profile,S2 sensor + sensor windows,nn,0.0349,0.0315,0.033
+PV,B: unseen profile,S3 sensor strong (S + ratios),ridge,0.1047,0.081,0.0572
+PV,B: unseen profile,S3 sensor strong (S + ratios),trees,0.1555,0.0541,0.0813
+PV,B: unseen profile,S3 sensor strong (S + ratios),nn,0.0462,0.0248,0.0266
+PV,B: unseen profile,T1 Twin only: all Twin features,ridge,0.0599,0.0436,0.0789
+PV,B: unseen profile,T1 Twin only: all Twin features,trees,0.0041,0.0232,0.0423
+PV,B: unseen profile,T1 Twin only: all Twin features,nn,0.0207,0.0297,0.0406
+PV,B: unseen profile,T2 Twin only: raw residuals,ridge,0.0992,0.079,0.1376
+PV,B: unseen profile,T2 Twin only: raw residuals,trees,0.0825,0.136,0.12
+PV,B: unseen profile,T2 Twin only: raw residuals,nn,0.0828,0.1298,0.1297
+PV,B: unseen profile,T3 Twin only: residual windows,ridge,0.0538,0.0545,0.1264
+PV,B: unseen profile,T3 Twin only: residual windows,trees,0.0028,0.0807,0.0741
+PV,B: unseen profile,T3 Twin only: residual windows,nn,0.0244,0.076,0.097
+PV,B: unseen profile,T4 Twin only: instantaneous,ridge,0.0944,0.0576,0.0758
+PV,B: unseen profile,T4 Twin only: instantaneous,trees,0.0607,0.0531,0.0403
+PV,B: unseen profile,T4 Twin only: instantaneous,nn,0.0725,0.0694,0.0547
+PV,B: unseen profile,C1 strong + raw residuals,ridge,0.0761,0.0434,0.0326
+PV,B: unseen profile,C1 strong + raw residuals,trees,0.0784,0.0398,0.0439
+PV,B: unseen profile,C1 strong + raw residuals,nn,0.0535,0.0336,0.0294
+PV,B: unseen profile,C2 strong + residual windows,ridge,0.0654,0.04,0.0297
+PV,B: unseen profile,C2 strong + residual windows,trees,0.0053,0.0159,0.0251
+PV,B: unseen profile,C2 strong + residual windows,nn,0.0236,0.0224,0.0147
+PV,B: unseen profile,C3 strong + all Twin,ridge,0.0649,0.0399,0.0297
+PV,B: unseen profile,C3 strong + all Twin,trees,0.0038,0.0145,0.0245
+PV,B: unseen profile,C3 strong + all Twin,nn,0.0258,0.0187,0.0186
+PV,B: unseen profile,C4 instantaneous sensor + instantaneous Twin,ridge,0.0865,0.0549,0.0707
+PV,B: unseen profile,C4 instantaneous sensor + instantaneous Twin,trees,0.0609,0.0515,0.0429
+PV,B: unseen profile,C4 instantaneous sensor + instantaneous Twin,nn,0.0649,0.0754,0.061
+Battery,A: unseen levels,S1 sensor instantaneous,ridge,0.2523,NaN,0.2549
+Battery,A: unseen levels,S1 sensor instantaneous,trees,0.2371,NaN,0.3084
+Battery,A: unseen levels,S1 sensor instantaneous,nn,0.2628,NaN,0.2788
+Battery,A: unseen levels,S2 sensor + sensor windows,ridge,0.241,NaN,0.2337
+Battery,A: unseen levels,S2 sensor + sensor windows,trees,0.2304,NaN,0.2785
+Battery,A: unseen levels,S2 sensor + sensor windows,nn,0.3137,NaN,0.317
+Battery,A: unseen levels,S3 sensor strong (S + ratios),ridge,0.2469,NaN,0.23
+Battery,A: unseen levels,S3 sensor strong (S + ratios),trees,0.2319,NaN,0.2817
+Battery,A: unseen levels,S3 sensor strong (S + ratios),nn,0.2769,NaN,0.363
+Battery,A: unseen levels,T1 Twin only: all Twin features,ridge,0.1613,NaN,0.2331
+Battery,A: unseen levels,T1 Twin only: all Twin features,trees,0.2091,NaN,0.2244
+Battery,A: unseen levels,T1 Twin only: all Twin features,nn,0.1758,NaN,0.2317
+Battery,A: unseen levels,T2 Twin only: raw residuals,ridge,0.2476,NaN,0.2489
+Battery,A: unseen levels,T2 Twin only: raw residuals,trees,0.2556,NaN,0.2722
+Battery,A: unseen levels,T2 Twin only: raw residuals,nn,0.2454,NaN,0.2496
+Battery,A: unseen levels,T3 Twin only: residual windows,ridge,0.1614,NaN,0.2353
+Battery,A: unseen levels,T3 Twin only: residual windows,trees,0.2198,NaN,0.2348
+Battery,A: unseen levels,T3 Twin only: residual windows,nn,0.2099,NaN,0.207
+Battery,A: unseen levels,T4 Twin only: instantaneous,ridge,0.2474,NaN,0.2478
+Battery,A: unseen levels,T4 Twin only: instantaneous,trees,0.3004,NaN,0.2799
+Battery,A: unseen levels,T4 Twin only: instantaneous,nn,0.2411,NaN,0.2538
+Battery,A: unseen levels,C1 strong + raw residuals,ridge,0.164,NaN,0.205
+Battery,A: unseen levels,C1 strong + raw residuals,trees,0.235,NaN,0.2853
+Battery,A: unseen levels,C1 strong + raw residuals,nn,0.2491,NaN,0.223
+Battery,A: unseen levels,C2 strong + residual windows,ridge,0.1419,NaN,0.1824
+Battery,A: unseen levels,C2 strong + residual windows,trees,0.1727,NaN,0.1786
+Battery,A: unseen levels,C2 strong + residual windows,nn,0.164,NaN,0.1949
+Battery,A: unseen levels,C3 strong + all Twin,ridge,0.1415,NaN,0.179
+Battery,A: unseen levels,C3 strong + all Twin,trees,0.1814,NaN,0.1755
+Battery,A: unseen levels,C3 strong + all Twin,nn,0.1637,NaN,0.1937
+Battery,A: unseen levels,C4 instantaneous sensor + instantaneous Twin,ridge,0.25,NaN,0.2525
+Battery,A: unseen levels,C4 instantaneous sensor + instantaneous Twin,trees,0.246,NaN,0.2883
+Battery,A: unseen levels,C4 instantaneous sensor + instantaneous Twin,nn,0.2769,NaN,0.3183
+Battery,B: unseen profile,S1 sensor instantaneous,ridge,0.3826,0.021,0.3794
+Battery,B: unseen profile,S1 sensor instantaneous,trees,0.3327,0.155,0.3471
+Battery,B: unseen profile,S1 sensor instantaneous,nn,0.3955,0.2324,0.3923
+Battery,B: unseen profile,S2 sensor + sensor windows,ridge,0.3315,0.0811,0.3866
+Battery,B: unseen profile,S2 sensor + sensor windows,trees,0.3157,0.1325,0.4053
+Battery,B: unseen profile,S2 sensor + sensor windows,nn,0.3394,0.3052,0.5236
+Battery,B: unseen profile,S3 sensor strong (S + ratios),ridge,0.3154,0.0875,0.3889
+Battery,B: unseen profile,S3 sensor strong (S + ratios),trees,0.3122,0.1353,0.4022
+Battery,B: unseen profile,S3 sensor strong (S + ratios),nn,0.3868,0.2314,0.3451
+Battery,B: unseen profile,T1 Twin only: all Twin features,ridge,0.2827,0.1103,0.2313
+Battery,B: unseen profile,T1 Twin only: all Twin features,trees,0.2921,0.1423,0.1967
+Battery,B: unseen profile,T1 Twin only: all Twin features,nn,0.2296,0.151,0.2104
+Battery,B: unseen profile,T2 Twin only: raw residuals,ridge,0.3731,0.0228,0.3705
+Battery,B: unseen profile,T2 Twin only: raw residuals,trees,0.3769,0.1329,0.3702
+Battery,B: unseen profile,T2 Twin only: raw residuals,nn,0.3721,0.0272,0.3702
+Battery,B: unseen profile,T3 Twin only: residual windows,ridge,0.2807,0.1106,0.2363
+Battery,B: unseen profile,T3 Twin only: residual windows,trees,0.2289,0.1463,0.1674
+Battery,B: unseen profile,T3 Twin only: residual windows,nn,0.2204,0.1371,0.1657
+Battery,B: unseen profile,T4 Twin only: instantaneous,ridge,0.3733,0.0275,0.3675
+Battery,B: unseen profile,T4 Twin only: instantaneous,trees,0.4183,0.1616,0.3526
+Battery,B: unseen profile,T4 Twin only: instantaneous,nn,0.3682,0.0413,0.3709
+Battery,B: unseen profile,C1 strong + raw residuals,ridge,0.188,0.1112,0.2638
+Battery,B: unseen profile,C1 strong + raw residuals,trees,0.315,0.1221,0.3927
+Battery,B: unseen profile,C1 strong + raw residuals,nn,0.3483,0.1529,0.2624
+Battery,B: unseen profile,C2 strong + residual windows,ridge,0.1083,0.1557,0.2009
+Battery,B: unseen profile,C2 strong + residual windows,trees,0.1892,0.1364,0.2253
+Battery,B: unseen profile,C2 strong + residual windows,nn,0.2733,0.1998,0.2824
+Battery,B: unseen profile,C3 strong + all Twin,ridge,0.1055,0.1496,0.1993
+Battery,B: unseen profile,C3 strong + all Twin,trees,0.2004,0.1443,0.221
+Battery,B: unseen profile,C3 strong + all Twin,nn,0.2007,0.1562,0.2245
+Battery,B: unseen profile,C4 instantaneous sensor + instantaneous Twin,ridge,0.3801,0.0351,0.3727
+Battery,B: unseen profile,C4 instantaneous sensor + instantaneous Twin,trees,0.3722,0.1334,0.363
+Battery,B: unseen profile,C4 instantaneous sensor + instantaneous Twin,nn,0.3293,0.1841,0.4202

@@ -1,0 +1,8 @@
+Model_Input,PV_MAE,PV_RMSE,PV_R2,Batt_MAE,Batt_RMSE,Batt_R2,PV_Features,Batt_Features,PV_Size_B,Batt_Size_B
+"Baseline predictor (training mean)",0.3,0.3536,0,0.3,0.3536,0,0,0,4,4
+"Sensor-only, ridge",0.0731,0.1066,0.909,0.3035,0.3564,-0.016,16,12,68,52
+"Sensor-only, selected",0.0335,0.0658,0.965,0.3035,0.3564,-0.016,19,12,676,52
+"Twin-only, ridge",0.0644,0.0906,0.934,0.2277,0.2815,0.366,12,6,52,28
+"Sensor + raw residual, ridge",0.051,0.0926,0.931,0.2069,0.2528,0.489,21,16,88,68
+"Sensor + temporal residual, ridge",0.0448,0.0795,0.949,0.1548,0.2165,0.625,27,19,112,80
+"Full selected Sensor + Twin",0.0181,0.0312,0.992,0.1548,0.2165,0.625,27,19,932,80

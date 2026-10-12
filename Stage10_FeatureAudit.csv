@@ -1,0 +1,59 @@
+Asset,Feature,Group,Causal,UsesTrueLabel,Status
+PV,"S_PV_Irradiance_Final","instantaneous measured sensor",yes,no,used
+PV,"S_PV_Irradiance_Final_mean20","causal window of a measured sensor",yes,no,used
+PV,"S_PV_Irradiance_Final_std20","causal window of a measured sensor",yes,no,used
+PV,"S_PV_Irradiance_Final_slope60","causal window of a measured sensor",yes,no,used
+PV,"S_PV_Temperature_Final","instantaneous measured sensor",yes,no,used
+PV,"S_PV_Temperature_Final_mean20","causal window of a measured sensor",yes,no,used
+PV,"S_PV_Temperature_Final_std20","causal window of a measured sensor",yes,no,used
+PV,"S_PV_Temperature_Final_slope60","causal window of a measured sensor",yes,no,used
+PV,"S_PV_Voltage_Final","instantaneous measured sensor",yes,no,used
+PV,"S_PV_Voltage_Final_mean20","causal window of a measured sensor",yes,no,used
+PV,"S_PV_Voltage_Final_std20","causal window of a measured sensor",yes,no,used
+PV,"S_PV_Voltage_Final_slope60","causal window of a measured sensor",yes,no,used
+PV,"S_PV_Current_Final","instantaneous measured sensor",yes,no,used
+PV,"S_PV_Current_Final_mean20","causal window of a measured sensor",yes,no,used
+PV,"S_PV_Current_Final_std20","causal window of a measured sensor",yes,no,used
+PV,"S_PV_Current_Final_slope60","causal window of a measured sensor",yes,no,used
+PV,"E_I_over_G","ratio of measured sensors (causal 20 s means)",yes,no,used
+PV,"E_P_over_G","ratio of measured sensors (causal 20 s means)",yes,no,used
+PV,"E_Iinst_over_G","ratio of measured sensors (causal 20 s means)",yes,no,used
+PV,"T_PV_Twin_Current","Twin output computed from measured inputs",yes,no,used
+PV,"T_PV_Twin_Power","Twin output computed from measured inputs",yes,no,used
+PV,"T_PV_Residual_Current","Twin residual (measured minus Twin)",yes,no,used
+PV,"T_PV_Residual_Power","Twin residual (measured minus Twin)",yes,no,used
+PV,"T_PV_Residual_Current_Mean","Stage 9 causal window summary of a Twin residual",yes,no,used
+PV,"T_PV_Residual_Current_Std","Stage 9 causal window summary of a Twin residual",yes,no,used
+PV,"T_PV_Residual_Current_MaxAbs","Stage 9 causal window summary of a Twin residual",yes,no,used
+PV,"T_PV_Residual_Current_Trend","Stage 9 causal window summary of a Twin residual",yes,no,used
+PV,"T_PV_Residual_Power_Mean","Stage 9 causal window summary of a Twin residual",yes,no,used
+PV,"T_PV_Residual_Power_Std","Stage 9 causal window summary of a Twin residual",yes,no,used
+PV,"T_PV_Residual_Power_MaxAbs","Stage 9 causal window summary of a Twin residual",yes,no,used
+PV,"T_PV_Residual_Power_Trend","Stage 9 causal window summary of a Twin residual",yes,no,used
+Battery,"S_Battery_Voltage_Final","instantaneous measured sensor",yes,no,used
+Battery,"S_Battery_Voltage_Final_mean20","causal window of a measured sensor",yes,no,used
+Battery,"S_Battery_Voltage_Final_std20","causal window of a measured sensor",yes,no,used
+Battery,"S_Battery_Voltage_Final_slope60","causal window of a measured sensor",yes,no,used
+Battery,"S_Battery_Current_Final","instantaneous measured sensor",yes,no,used
+Battery,"S_Battery_Current_Final_mean20","causal window of a measured sensor",yes,no,used
+Battery,"S_Battery_Current_Final_std20","causal window of a measured sensor",yes,no,used
+Battery,"S_Battery_Current_Final_slope60","causal window of a measured sensor",yes,no,used
+Battery,"S_Battery_Temperature_Final","instantaneous measured sensor",yes,no,used
+Battery,"S_Battery_Temperature_Final_mean20","causal window of a measured sensor",yes,no,used
+Battery,"S_Battery_Temperature_Final_std20","causal window of a measured sensor",yes,no,used
+Battery,"S_Battery_Temperature_Final_slope60","causal window of a measured sensor",yes,no,used
+Battery,"E_V_over_I","ratio of measured sensors (causal 20 s means)",yes,no,used
+Battery,"E_P","ratio of measured sensors (causal 20 s means)",yes,no,used
+Battery,"E_Vstd_over_Istd","ratio of measured sensors (causal 20 s means)",yes,no,used
+Battery,"T_Battery_Twin_Voltage","Twin output computed from measured inputs",yes,no,used
+Battery,"T_Battery_Residual_Voltage","Twin residual (measured minus Twin)",yes,no,used
+Battery,"T_Battery_Residual_Voltage_Mean","Stage 9 causal window summary of a Twin residual",yes,no,used
+Battery,"T_Battery_Residual_Voltage_Std","Stage 9 causal window summary of a Twin residual",yes,no,used
+Battery,"T_Battery_Residual_Voltage_MaxAbs","Stage 9 causal window summary of a Twin residual",yes,no,used
+Battery,"T_Battery_Residual_Voltage_Trend","Stage 9 causal window summary of a Twin residual",yes,no,used
+both,"Battery_Twin_SOC_Estimate","clock-like: correlation with time -1.000, almost none with health",n/a,n/a,EXCLUDED
+both,"D_index, D_batt, Rs_aged, Rsh_aged, Iph_ref_aged, R0_aged, R1_aged, Capacity_aged, OCV_deltaV","true labels and hidden plant values",n/a,n/a,EXCLUDED
+both,"True_PV_Current, True_Battery_Voltage","noise-free plant truth, not observable",n/a,n/a,EXCLUDED
+both,"Fault_Active, PV_SensorFault_Active, Battery_SensorFault_Active, Battery_Fault_Active","ground-truth fault flags",n/a,n/a,EXCLUDED
+both,"*_Valid and *_Window_Valid flags","validity indicators, not used as inputs",n/a,n/a,EXCLUDED
+both,"t, run, level, profile, split","metadata only",n/a,n/a,EXCLUDED
