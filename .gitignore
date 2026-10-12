@@ -38,3 +38,13 @@ codegen/
 # SimBiology backup files
 *.sbproj.backup
 *.sbproj.bak
+
+*.mat 
+ 
+ .zip
+
+ .csv
+
+ .txt
+
+ 
