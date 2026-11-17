@@ -1,0 +1,144 @@
+{
+  "created": "2026-10-15 00:39:29",
+  "matlab": "25.2.0.3312555 (R2025b) Update 6",
+  "lambdaGrid": [
+    0.01,
+    0.1,
+    1,
+    10,
+    100,
+    1000
+  ],
+  "nn": {
+    "hidden": 8,
+    "iterations": 300,
+    "standardize": true,
+    "activation": "relu",
+    "seedsFinal": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  },
+  "bootstrap": {
+    "resamples": 2000,
+    "seed": 2.0261015E+7,
+    "level": 0.95,
+    "unit": "run"
+  },
+  "primaryContrast": "C2 strong + residual windows minus S3 sensor strong (baseline), per-run MAE, ridge and network",
+  "validation": "leave-one-group-out inside Dataset A (level folds and profile folds), whole runs held out",
+  "final": "train on all 100 Dataset A runs; test once on Dataset F (A-F: unseen health levels, B-F: unseen profile family)",
+  "trees": "not evaluated: bagged trees cannot extrapolate to unseen health levels (Regime A), documented in the Stage 10 report",
+  "rowUnit": "one row per second from t >= 60 s (91 rows per run)",
+  "hashes": {
+    "libSha256": "b44643cba4cba45e78bb770fa905b67bfc72ff197fd8ca21fde438119a443474",
+    "featuresA_PV": "d3d5548979ac222491686125afa76d954e147040a504c908633d833504390f37",
+    "featuresA_Battery": "752315716c41c40e9f416cdb2bec931083ec24a1d37abfb207e7152b79e872a5",
+    "manifestF": "dcf0a58b8efaf3e250d4583c950e79f164478ad41ba1032d52707e61f164655f",
+    "featuresF_PV": "290ea416826cd3eae045788539e61da180ec9e51253e859afe62161ac7407ad9",
+    "featuresF_Battery": "f54c47402b3062e201712a63d52c33ec9d29089aea890695ccbfe8e8840d5ea4"
+  },
+  "lambda": [
+    {
+      "asset": "PV",
+      "set": "S3 sensor strong (baseline)",
+      "lambda": 0.1,
+      "valScore": 0.0647166933879609
+    },
+    {
+      "asset": "PV",
+      "set": "C1 strong + raw residuals",
+      "lambda": 0.01,
+      "valScore": 0.043176859089039066
+    },
+    {
+      "asset": "PV",
+      "set": "C2 strong + residual windows",
+      "lambda": 0.01,
+      "valScore": 0.037767596330861866
+    },
+    {
+      "asset": "PV",
+      "set": "C2-mean (window mean only)",
+      "lambda": 0.01,
+      "valScore": 0.0383731134463138
+    },
+    {
+      "asset": "PV",
+      "set": "C2-std (window std only)",
+      "lambda": 0.1,
+      "valScore": 0.066223674659423692
+    },
+    {
+      "asset": "PV",
+      "set": "C2-maxabs (window max-abs only)",
+      "lambda": 0.01,
+      "valScore": 0.049750355772987982
+    },
+    {
+      "asset": "PV",
+      "set": "C2-trend (window trend only)",
+      "lambda": 0.01,
+      "valScore": 0.0644997802265161
+    },
+    {
+      "asset": "Battery",
+      "set": "S3 sensor strong (baseline)",
+      "lambda": 10,
+      "valScore": 0.33912633307364187
+    },
+    {
+      "asset": "Battery",
+      "set": "C1 strong + raw residuals",
+      "lambda": 0.1,
+      "valScore": 0.2578955351972998
+    },
+    {
+      "asset": "Battery",
+      "set": "C2 strong + residual windows",
+      "lambda": 10,
+      "valScore": 0.20492068899378907
+    },
+    {
+      "asset": "Battery",
+      "set": "C2-mean (window mean only)",
+      "lambda": 10,
+      "valScore": 0.25038299491691918
+    },
+    {
+      "asset": "Battery",
+      "set": "C2-std (window std only)",
+      "lambda": 1,
+      "valScore": 0.31860474560427915
+    },
+    {
+      "asset": "Battery",
+      "set": "C2-maxabs (window max-abs only)",
+      "lambda": 10,
+      "valScore": 0.34008550914919811
+    },
+    {
+      "asset": "Battery",
+      "set": "C2-trend (window trend only)",
+      "lambda": 100,
+      "valScore": 0.32885067696383963
+    }
+  ],
+  "sets": [
+    "S3 sensor strong (baseline)",
+    "C1 strong + raw residuals",
+    "C2 strong + residual windows",
+    "C2-mean (window mean only)",
+    "C2-std (window std only)",
+    "C2-maxabs (window max-abs only)",
+    "C2-trend (window trend only)"
+  ]
+}
